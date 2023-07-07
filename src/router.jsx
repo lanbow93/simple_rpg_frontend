@@ -6,6 +6,7 @@ const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path="/" element={<App />}>
             <Route path="" element={<Landing />} />
+            <Route path="signup" element={<Landing />} />
         </ Route>
     )
 )

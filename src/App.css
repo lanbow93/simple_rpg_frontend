@@ -1,14 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+
 * {
+
   --background-color: rgb(14,17,17);
   --menu-color: rgb(35,43,43);
   --text-color: rgb(209, 206, 206);
+  --text-font: 'MedievalSharp', cursive;
   margin: 0;
   padding: 0;
   border: 0;
-  /* background-color: var(--background-color);
-  color: var(--text-color); */
+  font-family: var(--text-font);
 }
-
+:root{
+  background-image: url("https://static.wixstatic.com/media/8ee8bf_b6a98a5db36243079b88938d3f5bf20b~mv2.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .hidden {
   display: none !important;
 }
@@ -35,40 +43,113 @@
   justify-content: space-around;
   padding-bottom: .25rem;
   background-color: var(--menu-color);
-
 }
+
 .dropdownMenu a{
   color: inherit;
   text-decoration: none;
 }
+
 .dropdownMenu{
   text-align: center;
 }
+
 .dropdownMenu h1 {
   font-size: 2rem;
   padding: 0 .75rem;
+
 }
+/*____________FINISH_____________*/
 
-
+/* LANDING PAGE MOBILE START */
 .landingPage {
-  border: 2px solid red;
-  min-height: 95vh;
-  background-image: url("https://static.wixstatic.com/media/8ee8bf_b6a98a5db36243079b88938d3f5bf20b~mv2.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  min-height: 96vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+.registrationArea {
+  background-color: var(--menu-color);
+  border-radius: 1rem;
+  height: 20rem;
+  width: 20rem;
+  box-shadow: 0px 0px 100px #fff;
+}
 
+.registrationArea h1 {
+  background-color: var(--text-color);
+  color: white;
+  border-top-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  text-align: center;
+  -webkit-text-stroke-width: .5px;
+  -webkit-text-stroke-color: black;
+  margin-bottom: 1rem;
+}
+
+.registrationForm form{
+  color: var(--text-color);
+  height: 15rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.6rem;
+  justify-content: space-around;
+}
+
+.registrationForm input{
+  font-size: 1.1rem;
+  height: 1.5rem;
+  border-radius: 1rem;
+  background-color: inherit;
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+  color: white;
+  padding: .3rem;
+}
+
+.buttonSection {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+
+}
+
+.buttonSection a{
+  display: flex;
+  justify-content: space-around;
+  color: inherit;
+  text-decoration: none;
+}
+.registrationForm button {
+  font-size: 1rem;
+  padding: .5rem;
+  border-radius: 1rem;
+  transition: 500ms;
+}
+
+.registrationForm button:hover{
+  font-size: 1.25rem;
+  transition: 500ms;
+}
 
 /*____________FINISH_____________*/
+
+
+
+
+
+
 
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 /*  Properties Large Phones / Tablets */
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 @media (min-width: 43rem) {
-
+  .landingPage {
+    min-height: 95vh;
+  }
 }
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 /*  Laptops and small monitors */

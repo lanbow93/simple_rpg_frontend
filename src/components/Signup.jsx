@@ -1,12 +1,12 @@
 import { Form, Link } from "react-router-dom"
 import { useState } from "react"
-function RegistrationBox(props) {
+function Signup(props) {
     const [usernameEntry, setUsernameEntry] = useState("")
     const [passwordEntry, setPasswordEntry] = useState("")
 
 
     return <div className="registrationArea">
-        <h1>Login/Sign-Up</h1>
+        <h1>Sign-Up</h1>
         <div className="registrationForm">
             <Form action="/test" method="post">
                 <label htmlFor="">Username:</label>
@@ -22,4 +22,4 @@ function RegistrationBox(props) {
     </div>
 }
 
-export default RegistrationBox
+export default Signup
