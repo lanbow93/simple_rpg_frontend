@@ -1,16 +1,16 @@
 import { useState } from "react";
-
+import { Link } from "react-router-dom";
 // States to return based on useState below for dropdown menu
 const hiddenOptions = <section className="options hidden">
-<a href=""><h2>Login</h2></a>
-<a href=""><h2>Characters</h2></a>
-<a href=""><h2>Logout</h2></a>
+    <Link><h2>Login</h2></Link>
+    <Link><h2>Characters</h2></Link>
+    <Link><h2>Logout</h2></Link>
 </section>
 
 const shownOptions = <section className="options">
-<a href=""><h2>Login</h2></a>
-<a href=""><h2>Characters</h2></a>
-<a href=""><h2>Logout</h2></a>
+    <Link><h2>Login</h2></Link>
+    <Link><h2>Characters</h2></Link>
+    <Link><h2>Logout</h2></Link>
 </section>
 
 function Navigation(props){
@@ -21,6 +21,7 @@ function Navigation(props){
 
     return <div className="navigation">
         <div className="dropdownMenu mobileOnly">
+            <Link to="/"><h1>RPG OF LEGENDS</h1></Link>
             <button onClick={menuClicked}><h1>≡</h1></button>
             {menuStatus === "hidden" ? hiddenOptions : shownOptions}
         </div>

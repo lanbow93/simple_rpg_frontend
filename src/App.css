@@ -17,28 +17,46 @@
 .navigation {
   background-color: var(--background-color);
   color: var(--text-color);
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.2);
+  border-bottom-left-radius: .5rem;
+  border-bottom-right-radius: .5rem;
 }
 
 .navigation button {
   background-color: inherit;
-  color: inherit;
+  color: white;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .navigation .options {
   display: flex;
   justify-content: space-around;
   padding-bottom: .25rem;
+  background-color: var(--menu-color);
 
 }
 .dropdownMenu a{
   color: inherit;
+  text-decoration: none;
 }
 .dropdownMenu{
-  text-align: end;
+  text-align: center;
 }
 .dropdownMenu h1 {
   font-size: 2rem;
   padding: 0 .75rem;
+}
+
+
+.landingPage {
+  border: 2px solid red;
+  min-height: 95vh;
+  background-image: url("https://static.wixstatic.com/media/8ee8bf_b6a98a5db36243079b88938d3f5bf20b~mv2.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 

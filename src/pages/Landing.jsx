@@ -1,7 +1,9 @@
+import RegistrationBox from "../components/RegistrationBox"
+
 function Landing(props){
 
     return <div className="landingPage">
-        <h1>RPG of Legends</h1>
+        {<RegistrationBox/>}
     </div>
 }
 
