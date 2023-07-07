@@ -1,0 +1,66 @@
+* {
+  --background-color: rgb(14,17,17);
+  --menu-color: rgb(35,43,43);
+  --text-color: rgb(209, 206, 206);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  /* background-color: var(--background-color);
+  color: var(--text-color); */
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* NAVIGATION MENU MOBILE START */
+.navigation {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.navigation button {
+  background-color: inherit;
+  color: inherit;
+}
+
+.navigation .options {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: .25rem;
+
+}
+.dropdownMenu a{
+  color: inherit;
+}
+.dropdownMenu{
+  text-align: end;
+}
+.dropdownMenu h1 {
+  font-size: 2rem;
+  padding: 0 .75rem;
+}
+
+
+
+/*____________FINISH_____________*/
+
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/*  Properties Large Phones / Tablets */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+@media (min-width: 43rem) {
+
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/*  Laptops and small monitors */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+@media (min-width: 62rem) {
+
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/* Large Screens */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+@media (min-width: 82rem) {
+  
+}

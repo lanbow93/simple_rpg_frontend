@@ -1,7 +1,7 @@
 function Landing(props){
 
     return <div className="landingPage">
-        <h1>Landing Page Reached</h1>
+        <h1>RPG of Legends</h1>
     </div>
 }
 
