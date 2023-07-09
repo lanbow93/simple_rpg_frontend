@@ -62,7 +62,7 @@
 /*____________FINISH_____________*/
 
 /* LANDING PAGE MOBILE START */
-.landingPage {
+.landingPage, .signupPage {
   min-height: 96vh;
   display: flex;
   justify-content: center;
@@ -135,11 +135,19 @@
 }
 
 /*____________FINISH_____________*/
+/* Sign Up Page */
 
+  .signupPage form{
+    height: 17rem;
+  }
 
-
-
-
+  .signupPage .registrationArea {
+    height: 22rem;
+  }
+  .signupPage form {
+    justify-content: space-between;
+  }
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 
 

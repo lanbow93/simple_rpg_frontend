@@ -2,7 +2,7 @@ import Signup from "../components/Signup"
 
 function SignupPage(props){
 
-    return <div className="landingPage">
+    return <div className="signupPage">
         {<Signup/>}
     </div>
 }
