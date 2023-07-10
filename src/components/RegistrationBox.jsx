@@ -9,7 +9,7 @@ function RegistrationBox(props) {
     return <div className="registrationArea">
         <h1>Login/Sign-Up</h1>
         <div className="registrationForm">
-            <Form action="/test" method="post">
+            <Form action="/accountlogin" method="post">
                 <label htmlFor="">Username:</label>
                 <input type="text" name="username" value={usernameEntry} onChange={(e) => setUsernameEntry(e.target.value) }/>
                 <label htmlFor="">Password:</label>
