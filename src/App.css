@@ -16,6 +16,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  background-color: black;
 }
 .hidden {
   display: none !important;
@@ -23,11 +24,14 @@
 
 /* NAVIGATION MENU MOBILE START */
 .navigation {
+  width: 100%;
   background-color: var(--background-color);
   color: var(--text-color);
   box-shadow: 0 2px 5px 0 rgba(0,0,0,0.2);
   border-bottom-left-radius: .5rem;
   border-bottom-right-radius: .5rem;
+  position: fixed;
+  top: 0;
 }
 
 .navigation button {
