@@ -19,7 +19,7 @@ export const signupAction = async({request}) => {
     } )
 
     if (response.status === 400) {
-        alert("Failed Signup")
+        alert("Failed Signup.\nTry again, if error persists, try a different username")
         console.log(response)
         return redirect("/signup")
     }
