@@ -16,7 +16,7 @@ function Signup(props) {
                 <label htmlFor="">Confirm Password:</label>
                     <input type="password" name="password" id="" value={confirmPasswordEntry} onChange={(e) => setConfirmPasswordEntry(e.target.value) }/>
                 <div className="buttonSection">
-                    <button type="submit">Create Account</button>
+                    {passwordEntry == confirmPasswordEntry && passwordEntry != "" && usernameEntry!= "" ? <button type="submit">Create Account</button> : <button type="submit" disabled>Create Account</button>}
                 </div>
             </Form>
         </div>
