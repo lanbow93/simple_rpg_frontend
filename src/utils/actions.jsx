@@ -15,6 +15,7 @@ export const signupAction = async({request}) => {
         headers: {
             "Content-Type": "application/json"
         },
+        credentials: "include",
         body: JSON.stringify(user)
     } )
 
@@ -39,6 +40,7 @@ export const loginAction = async ({request}) => {
             headers: {
                 "Content-Type": "application/json"
             },
+            credentials: "include",
             body: JSON.stringify(user)
         })
 

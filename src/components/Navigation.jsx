@@ -15,8 +15,6 @@ const shownOptions = <section className="options">
 
 function Navigation(props){
     const [menuStatus, setMenuStatus] = useState("hidden")
-
-
     const menuClicked = () => menuStatus === "hidden" ? setMenuStatus("showing") : setMenuStatus("hidden")
 
     return <div className="navigation">
