@@ -152,7 +152,11 @@
     justify-content: space-between;
   }
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-
+/*_________Characters Menu_________*/
+.characteraArea {
+  min-height: 96vh;
+}
+/*____________FINISH_____________*/
 
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */

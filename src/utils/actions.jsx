@@ -26,3 +26,26 @@ export const signupAction = async({request}) => {
 
     return redirect("/")
 }
+
+export const loginAction = async ({request}) => {
+  
+        const formData = await request.formData();
+        const user = {
+            username: formData.get("username"),
+            password: formData.get("password")
+        }
+        const response = await fetch(URL + "/auth/login", {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(user)
+        })
+
+        if (response.status === 400){
+            alert("Username or Password Invalid")
+            return redirect("/")
+        }
+        return redirect("/characters")
+} 
+

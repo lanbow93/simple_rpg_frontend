@@ -2,7 +2,8 @@ import {createBrowserRouter, createRoutesFromElements, Route} from "react-router
 import App from "./App";
 import Landing from "./pages/Landing"
 import SignupPage from "./pages/SignupPage"
-import { signupAction } from "./utils/actions";
+import Characters from "./pages/Characters"
+import { signupAction, loginAction } from "./utils/actions";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -10,6 +11,8 @@ const router = createBrowserRouter(
             <Route path="" element={<Landing />} />
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/accountcreate" action={signupAction} />
+            <Route path="/login" action={loginAction} />
+            <Route path="characters" element={<Characters />} />
         </ Route>
     )
 )
