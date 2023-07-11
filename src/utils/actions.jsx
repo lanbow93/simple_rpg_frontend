@@ -51,3 +51,21 @@ export const loginAction = async ({request}) => {
         return redirect("/characters")
 } 
 
+export const logoutAction = async () => {
+    const response = await fetch(URL+ "/auth/logout", {
+        method: "post",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        credentials: "include"
+    } )
+
+    if (response.status === 400) {
+        alert("Failed To Logout")
+        return redirect("/characters")
+    }
+
+    return redirect("/")
+    
+}
+

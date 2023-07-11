@@ -34,7 +34,7 @@
   top: 0;
 }
 
-.navigation button {
+#hamburgerMenuButton {
   background-color: inherit;
   color: white;
   position: absolute;
@@ -52,6 +52,16 @@
 .dropdownMenu a{
   color: inherit;
   text-decoration: none;
+}
+
+.dropdownMenu button{
+  background-color: inherit;
+  color: inherit;
+  font-size: inherit;
+}
+
+.dropdownMenu button:hover{
+  cursor: pointer;
 }
 
 .dropdownMenu{
