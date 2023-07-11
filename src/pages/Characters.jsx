@@ -1,8 +1,13 @@
+import { useLoaderData } from "react-router-dom"
+import CharacterCard from "../components/CharacterCard"
 
 function Characters(props) {
-
+    const character_list = useLoaderData()
+    console.log(character_list)
     return <div className="charactersArea">
-        <h1>Characters Area</h1>
+        <div className="cardArea">
+            {character_list.map((character) => <CharacterCard data={character} />)}
+        </div>
     </div>
 }
 
