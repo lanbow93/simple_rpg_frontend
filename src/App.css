@@ -10,6 +10,7 @@
   padding: 0;
   border: 0;
   font-family: var(--text-font);
+  
 }
 :root{
   background-image: url("https://static.wixstatic.com/media/8ee8bf_b6a98a5db36243079b88938d3f5bf20b~mv2.jpg");
@@ -17,6 +18,8 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-color: black;
+  background-attachment:fixed;
+
 }
 .hidden {
   display: none !important;
@@ -171,16 +174,49 @@
 }
 
 .cardArea {
-  border: 1px solid red;
   width: 100%;
   height: 45rem;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   padding: .5rem;
   gap: 1rem;
   row-gap: 1rem;
 }
 
+.characterCardArea{
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 1rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+
+}
+
+.characterCardArea img {
+  max-width: 70%;
+  max-height: 15rem;
+}
+
+.characterCardArea h1 {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  margin-bottom: 1rem;
+
+}
+
+.cardDetails {
+  background-color: var(--text-color);
+  color: var(--background-color);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-around;
+  font-size: 1.5rem;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  margin-top: 1rem;
+}
 
 /*____________FINISH_____________*/
 
@@ -192,6 +228,7 @@
   .landingPage {
     min-height: 95vh;
   }
+
 }
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 /*  Laptops and small monitors */
