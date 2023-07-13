@@ -208,16 +208,22 @@
 /*_________New Character Screen_________*/
 
 .characterCreationArea form{
-  border: 1px solid red;
   width: 90%;
   max-width: 40rem;
   text-align: center;
   background-color: var(--text-color);
+  border-radius: 1rem;
 }
 .characterCreationArea form h1{
   background-color: var(--background-color);
   color: var(--text-color);
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
 
+.characterCreationArea img {
+  margin-top: 1rem;
+  max-height: 15rem;
 }
 .characterCreationArea form h3{
   margin: 1rem 0;
