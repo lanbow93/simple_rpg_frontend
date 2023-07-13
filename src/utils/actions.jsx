@@ -71,15 +71,28 @@ export const logoutAction = async () => {
 
 export const createCharacterAction = async ({request}) => {
     const formData = await request.formData()
-
-
-
+    const character = {
+        name: formData.get("name"),
+        classType: formData.get("classType"),
+        weapon: formData.get("weapon"),
+        armor: formData.get("armor"),
+        health: 20,
+        experience: 0,
+        gold: 5,
+        inventory: formData.get("inventory")
+    }
     const response = await fetch(URL + "/character", {
         method: "post",
         headers: {
             "Content-Type": "application/json"
         },
-        credentials: "include"
+        credentials: "include",
+        body: JSON.stringify(character)
     })
+    if (response.status === 400){
+        alert("Character creation failed")
+        return redirect("/newcharacter")
+    }
+    return("/characters")
 }
 

@@ -5,7 +5,7 @@ function NewCharacter(props){
 
     const [newCharacter, setNewCharacter] = useState()
     return <div className="characterCreationArea">
-        <Form action="/new" className="newCharacterForm">
+        <Form action="/create" className="newCharacterForm">
             <h1>New Character</h1>
             
             <h3>Character Name: </h3>
