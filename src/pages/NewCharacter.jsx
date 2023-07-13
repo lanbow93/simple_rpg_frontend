@@ -49,11 +49,11 @@ function NewCharacter(props){
 
 
     return <div className="characterCreationArea">
-        <Form action="/create" className="newCharacterForm">
+        <Form action="/create" className="newCharacterForm" method="post">
             <h1>New Character</h1>
             <img src={currentImage} alt="" />
             <h3>Character Name: </h3>
-            <input type="text" name="name" placeholder="Merlin" />
+            <input type="text" name="name" placeholder="Merlin" autoComplete="off" value={characterName} onChange={(e)=> {setCharacterName(e.target.value)}}/>
             <div className="radioOptions">
                 <input type="radio" name="being_class" value="wizard" defaultChecked onChange={radioChange}/>
                 <p>Wizard</p>
@@ -66,7 +66,7 @@ function NewCharacter(props){
             <input type="hidden" name="weapon" value={newCharacter.weapon}/>
             <input type="hidden" name="armor" value={newCharacter.armor} />
             <input type="hidden" name="inventory" value={newCharacter.inventory} />
-            <button>Create</button>
+            {characterName ? <button>Create</button> : <button disabled>Create</button>}
         </Form>
     </div>
 }

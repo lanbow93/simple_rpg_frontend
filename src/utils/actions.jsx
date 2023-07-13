@@ -93,6 +93,6 @@ export const createCharacterAction = async ({request}) => {
         alert("Character creation failed")
         return redirect("/newcharacter")
     }
-    return("/characters")
+    return redirect("/characters")
 }
 
