@@ -19,12 +19,30 @@ function NewCharacter(props){
         switch (selectedClass) {
             case "wizard":
                 setCurrentImage(wizardIcon)
+                setNewCharacter({
+                    classType: "wizard",
+                    weapon: "wand",
+                    armor: "novice robe",
+                    inventory: ["wand", "novice robe"]
+                })
                 break
             case "warrior":
                 setCurrentImage(warriorIcon)
+                setNewCharacter({
+                    classType: "warrior",
+                    weapon: "sword",
+                    armor: "chainmail",
+                    inventory: ["sword", "chainmail"]
+                })
                 break
             default:
                 setCurrentImage(rogueIcon)
+                setNewCharacter({
+                    classType: "rogue",
+                    weapon: "bow",
+                    armor: "cloak",
+                    inventory: ["bow", "cloak"]
+                })
                 break;
         }
     }
