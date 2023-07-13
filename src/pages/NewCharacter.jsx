@@ -44,6 +44,10 @@ function NewCharacter(props){
                 <input type="radio" name="being_class" value="rogue" onChange={radioChange}/>
                 <p>Rogue</p>
             </div>
+            <input type="hidden" name="classType" value={newCharacter.classType} />
+            <input type="hidden" name="weapon" value={newCharacter.weapon}/>
+            <input type="hidden" name="armor" value={newCharacter.armor} />
+            <input type="hidden" name="inventory" value={newCharacter.inventory} />
             <button>Create</button>
         </Form>
     </div>
