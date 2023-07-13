@@ -69,3 +69,17 @@ export const logoutAction = async () => {
     
 }
 
+export const createCharacterAction = async ({request}) => {
+    const formData = await request.formData()
+
+
+
+    const response = await fetch(URL + "/character", {
+        method: "post",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        credentials: "include"
+    })
+}
+

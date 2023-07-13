@@ -68,7 +68,7 @@
 /*____________FINISH_____________*/
 
 /* LANDING PAGE MOBILE START */
-.landingPage, .signupPage {
+.landingPage, .signupPage, .characterCreationArea {
   min-height: 96vh;
   display: flex;
   justify-content: center;
@@ -207,7 +207,48 @@
 
 /*_________New Character Screen_________*/
 
+.characterCreationArea form{
+  border: 1px solid red;
+  width: 90%;
+  max-width: 40rem;
+  text-align: center;
+  background-color: var(--text-color);
+}
+.characterCreationArea form h1{
+  background-color: var(--background-color);
+  color: var(--text-color);
 
+}
+.characterCreationArea form h3{
+  margin: 1rem 0;
+}
+
+.characterCreationArea button{
+  font-size: 1.2rem;
+  padding: .2rem 4rem;
+  border-radius: 2rem;
+  border: 6px outset blue;
+  border-style: outset;
+  background-color: white;
+  margin: .7rem 0;
+}
+
+.characterCreationArea form input[type="text"]{
+  font-size: 1.6rem;
+  background-color: inherit;
+  border-bottom: 2px solid black;  
+}
+
+.radioOptions {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 1rem;
+  font-size: 1.4rem;
+}
+
+.radioOptions p {
+  margin-left: -1rem;
+}
 
 
 /*____________FINISH_____________*/
