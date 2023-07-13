@@ -1,4 +1,4 @@
-import URL from "./url"
+import {URL} from "./url"
 import { redirect } from "react-router-dom"
 
 

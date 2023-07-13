@@ -1,4 +1,4 @@
-import URL from "./url";
+import {URL} from "./url";
 export const charactersLoader = async () => {
     try {
         return await fetch(URL + "/character", {

@@ -181,6 +181,7 @@
   padding: .5rem;
   gap: 1rem;
   row-gap: 1rem;
+  text-align: end;
 }
 
 .characterCardArea{
@@ -197,16 +198,18 @@
   max-height: 15rem;
 }
 
-.characterCardArea button {
+
+
+.characterCardArea button, .cardArea button {
   font-size: 2rem;
   padding: .2rem 1rem;
   border-radius: 2rem;
   border: 8px outset blue;
   border-style: outset;
   background-color: white;
-
-
-  
+}
+.cardArea button {
+  font-size: 1.25rem;
 }
 
 .characterCardArea h1 {
