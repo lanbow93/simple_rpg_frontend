@@ -1,6 +1,10 @@
 import { Form } from "react-router-dom"
 import { useState } from "react"
-import { wizardImage, warriorImage, rogueImage } from "../utils/url"
+
+import wizardIcon from "../assets/wizard.png"
+import warriorIcon from "../assets/warrior.png"
+import rogueIcon from "../assets/rogue.png"
+
 function NewCharacter(props){
     const [characterName, setCharacterName] = useState("") 
     const [newCharacter, setNewCharacter] = useState({
@@ -9,18 +13,18 @@ function NewCharacter(props){
         armor: "novice robe",
         inventory: ["wand", "novice robe"]
     })
-    const [currentImage, setCurrentImage] = useState(wizardImage)
+    const [currentImage, setCurrentImage] = useState(wizardIcon)
     function radioChange(event){
         const selectedClass = event.target.value
         switch (selectedClass) {
             case "wizard":
-                setCurrentImage(wizardImage)
+                setCurrentImage(wizardIcon)
                 break
             case "warrior":
-                setCurrentImage(warriorImage)
+                setCurrentImage(warriorIcon)
                 break
             default:
-                setCurrentImage(rogueImage)
+                setCurrentImage(rogueIcon)
                 break;
         }
     }
