@@ -11,7 +11,7 @@
   font-family: var(--text-font);
 }
 :root{
-  background-image: url("https://static.wixstatic.com/media/8ee8bf_b6a98a5db36243079b88938d3f5bf20b~mv2.jpg");
+  background-image: url("./assets/background.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
