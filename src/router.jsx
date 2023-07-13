@@ -5,7 +5,8 @@ import Logout from "./pages/Logout"
 import SignupPage from "./pages/SignupPage"
 import Characters from "./pages/Characters"
 import { signupAction, loginAction, logoutAction } from "./utils/actions";
-import { charactersLoader } from "./utils/loaders";
+import { characterLoader, charactersLoader } from "./utils/loaders";
+import PlayPage from "./pages/PlayPage";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -14,6 +15,7 @@ const router = createBrowserRouter(
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/accountcreate" action={signupAction} />
             <Route path="/characters" element={<Characters />} loader={charactersLoader}/>
+            <Route path="/play" element={<PlayPage />} />
             <Route path="/login" action={loginAction} />
             <Route path="/logout" action={logoutAction } />
         </ Route>

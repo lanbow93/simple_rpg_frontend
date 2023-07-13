@@ -197,6 +197,18 @@
   max-height: 15rem;
 }
 
+.characterCardArea button {
+  font-size: 2rem;
+  padding: .2rem 1rem;
+  border-radius: 2rem;
+  border: 8px outset blue;
+  border-style: outset;
+  background-color: white;
+
+
+  
+}
+
 .characterCardArea h1 {
   background-color: var(--background-color);
   color: var(--text-color);
@@ -216,6 +228,9 @@
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
   margin-top: 1rem;
+}
+.details{
+  font-size: 1.7rem;
 }
 
 /*____________FINISH_____________*/
