@@ -4,8 +4,9 @@ import Landing from "./pages/Landing"
 import Logout from "./pages/Logout"
 import SignupPage from "./pages/SignupPage"
 import Characters from "./pages/Characters"
+import NewCharacter from "./pages/NewCharacter";
 import { signupAction, loginAction, logoutAction } from "./utils/actions";
-import { characterLoader, charactersLoader } from "./utils/loaders";
+import { charactersLoader } from "./utils/loaders";
 import PlayPage from "./pages/PlayPage";
 
 const router = createBrowserRouter(
@@ -16,6 +17,7 @@ const router = createBrowserRouter(
             <Route path="/accountcreate" action={signupAction} />
             <Route path="/characters" element={<Characters />} loader={charactersLoader}/>
             <Route path="/play" element={<PlayPage />} />
+            <Route path="/newcharacter" element={<NewCharacter/>} />
             <Route path="/login" action={loginAction} />
             <Route path="/logout" action={logoutAction } />
         </ Route>

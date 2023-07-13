@@ -6,7 +6,7 @@ function Characters(props) {
     console.log(character_list)
     return <div className="charactersArea">
         <div className="cardArea">
-                <Link to="/create" ><button>New Character</button></Link>
+                <Link to="/newcharacter" ><button>New Character</button></Link>
             {character_list.map((character) => <CharacterCard data={character} key={character._id} />)}
         </div>
     </div>

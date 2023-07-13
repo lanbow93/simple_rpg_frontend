@@ -5,7 +5,6 @@ import { warriorImage, rogueImage, wizardImage } from "../utils/url"
 
 function CharacterCard(props) {
     const character = props.data
-    console.log(character)
     return <div className="characterCardArea">
         <h1>{character.name}</h1>
         <img src={character.classType === "wizard" ? wizardImage : character.classType === "warrior" ? warriorImage : rogueImage} alt="" />
@@ -13,8 +12,8 @@ function CharacterCard(props) {
         <div className="cardDetails">
             <p>Class:</p>
             <p>Level:</p>
-            <p><section className="details">{character.classType.charAt(0).toUpperCase() + character.classType.substring(1)}</section></p>
-            <p><section className="details">{Math.floor(character.experience / 10) + 1}</section></p>
+            <p className="details">{character.classType.charAt(0).toUpperCase() + character.classType.substring(1)}</p>
+            <p className="details">{Math.floor(character.experience / 10) + 1}</p>
         </div>
     </div>
 }
