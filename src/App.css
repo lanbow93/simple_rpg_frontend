@@ -68,7 +68,7 @@
 /*____________FINISH_____________*/
 
 /* LANDING PAGE MOBILE START */
-.landingPage, .signupPage, .characterCreationArea {
+.landingPage, .signupPage, .characterCreationArea, .errorMessageSection {
   min-height: 96vh;
   display: flex;
   justify-content: center;
@@ -260,7 +260,21 @@
   margin-left: -1rem;
 }
 
+/*____________FINISH_____________*/
 
+/*_________Error Screen_________*/
+
+.error{
+  background-color: red;
+  text-align: center;
+  padding: 3rem 10rem;
+  border: 3px inset black;
+  border-radius: 1rem;
+}
+
+.error h2{
+  margin-top: 1rem;
+}
 /*____________FINISH_____________*/
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */

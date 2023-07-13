@@ -1,7 +1,6 @@
 import {createBrowserRouter, createRoutesFromElements, Route} from "react-router-dom";
 import App from "./App";
 import Landing from "./pages/Landing"
-import Logout from "./pages/Logout"
 import SignupPage from "./pages/SignupPage"
 import Characters from "./pages/Characters"
 import NewCharacter from "./pages/NewCharacter";
