@@ -1,4 +1,5 @@
 import { useLocation } from "react-router-dom"
+import HomeScreen from "../components/HomeScreen"
 
 function PlayPage(props){
     console.log(props)
@@ -7,7 +8,7 @@ function PlayPage(props){
     console.log(user)
     
     return <div className="playArea">
-        <h1>Play</h1>
+        <HomeScreen />
     </div>
 }
 
