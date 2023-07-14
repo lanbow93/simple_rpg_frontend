@@ -1,6 +1,6 @@
 function MessageBox(props){
     return <div className="messageArea">
-        <h1>Message Box</h1>
+        <h1>{props.screenMessage}</h1>
     </div>
 }
 

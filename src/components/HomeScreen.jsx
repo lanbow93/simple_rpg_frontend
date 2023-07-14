@@ -11,7 +11,9 @@ function HomeScreen(props){
                 <h3>Health</h3>
                 <h2>10/10</h2>
             </div>
-            <img src={props.classType === "warrior" ? warriorIcon : props.classType === "wizard" ? wizardIcon : rogueIcon} alt="" />
+            <div className="characterIcon">
+                <img src={props.classType === "warrior" ? warriorIcon : props.classType === "wizard" ? wizardIcon : rogueIcon} alt="" />
+            </div>
             <div className="currentLevel">
                 <h3>Level</h3>
                 <h2>2</h2>

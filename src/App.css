@@ -297,14 +297,20 @@
 .playArea {
   height: 98vh;
   padding-top: 2.1rem;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .homeScreen{
   border: 1px solid red;
   margin-top: 3rem;
-  /* height: 40rem; */
+  
 }
-
+.displayArea, .messageArea, .gameOptionsArea{
+  min-width: 22rem;
+}
 .displayArea{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -312,6 +318,7 @@
   background-color: tan;
   align-items: center;
   padding: 1rem 0;
+  
 }
 .displayArea h1{
   grid-column: span 3;
@@ -322,6 +329,20 @@
 .displayArea img{
   max-height: 10rem;
 }
+
+.messageArea{
+  text-align: center;
+  height: 8rem;
+  background-color: black;
+  color: white;
+}
+
+.gameOptionsArea {
+  background-color: gold;
+  text-align: center;
+}
+
+
 
 /*____________FINISH_____________*/
 
@@ -362,6 +383,14 @@
   .characterCardArea {
     justify-self: center;
     min-width: 25rem;
+  }
+
+  .displayArea img{
+    max-height: 15rem;
+  }
+
+  .displayArea, .messageArea, .gameOptionsArea{
+    min-width: 45rem;
   }
 
 }

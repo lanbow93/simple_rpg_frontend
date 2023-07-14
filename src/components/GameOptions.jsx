@@ -1,5 +1,5 @@
 function GameOptions(props){
-    return <div className="gameOptionArea">
+    return <div className="gameOptionsArea">
         <h1>Game Options</h1>
     </div>
 }
