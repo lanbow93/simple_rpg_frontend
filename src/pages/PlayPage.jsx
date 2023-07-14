@@ -8,7 +8,7 @@ function PlayPage(props){
     console.log(user)
     
     return <div className="playArea">
-        <HomeScreen />
+        <HomeScreen name={user.name} classType={user.classType}/>
     </div>
 }
 
