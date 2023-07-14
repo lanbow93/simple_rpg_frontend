@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, Form } from "react-router-dom"
 import { useState } from "react"
 import warriorIcon from "../assets/warrior.png"
 import wizardIcon from "../assets/wizard.png"
@@ -32,11 +32,11 @@ function CharacterCard(props) {
             <p className="details">{Math.floor(character.experience / 10) + 1}</p>
         </div>
         <div className={modalClass}>
-        <form action={`/delete/${character._id}`} method="post">
+        <Form action={`/delete/${character._id}`} method="post">
             <h2>Confirm Deletion</h2>
             <button className="delete">Delete</button>
             <button onClick={(e) => { handleClick(e)  }}>Cancel</button>
-        </form>
+        </Form>
         </div>
     </div>
 }

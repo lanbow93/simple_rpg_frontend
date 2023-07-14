@@ -53,7 +53,7 @@ function NewCharacter(props){
             <h1>New Character</h1>
             <img src={currentImage} alt="" />
             <h3>Character Name: </h3>
-            <input type="text" name="name" maxLength="20" placeholder="Merlin" autoComplete="off" value={characterName} onChange={(e)=> { characterName.length < 21 ? setCharacterName(e.target.value) : ""}}/>
+            <input type="text" name="name" maxLength="19" placeholder="Merlin" autoComplete="off" value={characterName} onChange={(e)=> { characterName.length < 20 ? setCharacterName(e.target.value) : ""}}/>
             <div className="radioOptions">
                 <input type="radio" name="being_class" value="wizard" defaultChecked onChange={radioChange}/>
                 <p>Wizard</p>
