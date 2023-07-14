@@ -184,14 +184,25 @@
 .cardArea button {
   font-size: 1.25rem;
   margin-top: 1rem;
-
 }
-.characterCardArea h1 {
+
+.banner {
   background-color: var(--background-color);
   color: var(--text-color);
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
   margin-bottom: 1rem;
+}
+
+.banner button{
+  position: absolute;
+  margin-top: -2.3rem;
+  margin-left: 10.4rem;
+  background-color: red;
+  color: white;
+  border: none;
+  padding: .42rem .7rem .50rem .7rem;
+  border-radius: 0 1rem 0 0;
 }
 .cardDetails {
   background-color: var(--text-color);
@@ -206,6 +217,25 @@
 }
 .details{
   font-size: 1.7rem;
+}
+
+.confirmDeletion{
+  position: absolute;
+  margin-top: -19rem;
+  margin-left: 2.7rem;
+  background-color: white;
+  box-shadow: 2px 2px 50px 20px black;
+  border-radius: 1rem;
+  background-color: rgb(255, 72, 0);
+}
+
+.confirmDeletion form{
+  padding: 3rem;
+}
+
+.confirmDeletion button{
+  margin: 0 .2rem;
+  margin-top: 1rem;
 }
 /*____________FINISH_____________*/
 
