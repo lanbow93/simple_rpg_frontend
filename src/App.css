@@ -309,7 +309,7 @@
   
 }
 .displayArea, .messageArea, .gameOptionsArea{
-  min-width: 22rem;
+  width: 22rem;
 }
 .displayArea{
   display: grid;
@@ -341,6 +341,11 @@
   background-color: gold;
   text-align: center;
 }
+.homeOptions {
+  display: flex;
+  justify-content: space-around;
+}
+
 
 
 
@@ -390,7 +395,7 @@
   }
 
   .displayArea, .messageArea, .gameOptionsArea{
-    min-width: 45rem;
+    width: 45rem;
   }
 
 }

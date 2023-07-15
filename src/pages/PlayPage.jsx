@@ -8,14 +8,36 @@ function PlayPage(props){
     console.log(props)
     const location = useLocation()
     const {user, message} = location.state
-    console.log(user)
-
+    const [currentScreen, setCurrentScreen] = useState("home")
     const [messageToDisplay, setMessageToDisplay] = useState(message ? message : "Select An Option")
+    console.log(user)
     
+    function goToFight(){
+        setCurrentScreen("fight")
+        setMessageToDisplay("This is your setup\nAre you ready to fight?")
+    }
+    function goToStore(){
+        setCurrentScreen("store")
+        setMessageToDisplay("What would you like to purchase?")
+    }
+
+    function goToInventory(){
+        setCurrentScreen("inventory")
+        setMessageToDisplay("Browsing Inventory")
+    }
+
+    const menuOptions = {
+        home:
+        <div className="homeOptions">
+        <button onClick={ goToFight }>Fight</button>
+        <button onClick={ goToStore } >Store</button>
+        <button onClick={ goToInventory }>Inventory</button>
+        </div>
+    }
     return <div className="playArea">
-        <HomeScreen name={user.name} classType={user.classType}/>
+        {currentScreen === "home" ? <HomeScreen name={user.name} classType={user.classType}/> : ""}
         <MessageBox screenMessage={messageToDisplay} />
-        <GameOptions />
+        <GameOptions buttonOptions={currentScreen === "home" ? menuOptions.home : ""} />
         
     </div>
 }

@@ -1,6 +1,6 @@
 function GameOptions(props){
     return <div className="gameOptionsArea">
-        <h1>Game Options</h1>
+        {props.buttonOptions}
     </div>
 }
 
