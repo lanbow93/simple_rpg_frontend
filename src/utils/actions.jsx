@@ -53,11 +53,12 @@ export const loginAction = async ({request}) => {
 
 export const logoutAction = async () => {
     const response = await fetch(URL+ "/auth/logout", {
-        method: "post",
+        method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
-        credentials: "include"
+        credentials: "include",
+        body: JSON.stringify({})
     } )
 
     if (response.status === 400) {

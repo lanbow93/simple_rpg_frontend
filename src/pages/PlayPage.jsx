@@ -34,8 +34,8 @@ function PlayPage(props){
         <button onClick={ goToInventory }>Inventory</button>
         </div>
     }
-    return <div className="playArea">
-        {currentScreen === "home" ? <HomeScreen name={user.name} classType={user.classType}/> : ""}
+    return <div className="playArea"> 
+        {currentScreen === "home" ? <HomeScreen name={user.name} classType={user.classType} health={user.health} experience={user.experience}/> : ""}
         <MessageBox screenMessage={messageToDisplay} />
         <GameOptions buttonOptions={currentScreen === "home" ? menuOptions.home : ""} />
         

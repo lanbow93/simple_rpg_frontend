@@ -304,18 +304,21 @@
 }
 
 .homeScreen{
-  border: 1px solid red;
   margin-top: 3rem;
-  
 }
 .displayArea, .messageArea, .gameOptionsArea{
   width: 22rem;
+  border: .5rem groove black;
+}
+.messageArea, .gameOptionsArea{
+  border-top: none;
+  border-top-left-radius: none;
 }
 .displayArea{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   text-align: center;
-  background-color: tan;
+  background-color: #ffdc73;
   align-items: center;
   padding: 1rem 0;
   
@@ -333,8 +336,11 @@
 .messageArea{
   text-align: center;
   height: 8rem;
-  background-color: black;
+  background-color: #a67c00;
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .gameOptionsArea {
@@ -346,7 +352,21 @@
   justify-content: space-around;
 }
 
-
+.homeOptions button{
+  margin: 1rem 0;
+  padding: 1rem;
+  min-width: 30%;
+  border-radius: 2rem 0 2rem 0;
+  border: .2rem outset gold;
+  background-color: #ffbf00;
+  font-size: 1rem;
+}
+.homeOptions button:nth-of-type(2){
+  border-radius: 0rem 0rem 2rem 2rem;
+}
+.homeOptions button:nth-of-type(3){
+  border-radius: 0rem 2rem 0rem 2rem;
+}
 
 
 /*____________FINISH_____________*/
