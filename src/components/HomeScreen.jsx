@@ -1,6 +1,7 @@
 import warriorIcon from "../assets/warrior.png"
 import wizardIcon from "../assets/wizard.png"
 import rogueIcon from "../assets/rogue.png"
+import { gameDetails } from "../utils/gameDetails"
 
 
 function HomeScreen(props){
@@ -9,7 +10,7 @@ function HomeScreen(props){
             <h1>{props.name}</h1>
             <div className="healthStats">
                 <h3>Health</h3>
-                <h2>{props.health}/20</h2>
+                <h2>{props.health}/{gameDetails[props.classType].stats.health}</h2>
             </div>
             <div className="characterIcon">
                 <img src={props.classType === "warrior" ? warriorIcon : props.classType === "wizard" ? wizardIcon : rogueIcon} alt="" />
