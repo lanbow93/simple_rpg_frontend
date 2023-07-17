@@ -1,4 +1,4 @@
-export const Details = {
+export const gameDetails = {
     wizard: {
         weapons: {
             wand: {

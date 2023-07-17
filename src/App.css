@@ -303,11 +303,13 @@
   align-items: center;
 }
 
-.homeScreen{
+.homeScreen, .storeDisplay{
   margin-top: 3rem;
 }
-.displayArea, .messageArea, .gameOptionsArea{
+.displayArea, .messageArea, .gameOptionsArea, .storeItemArea{
   width: 22rem;
+}
+.gameBorder {
   border: .5rem groove black;
 }
 .messageArea, .gameOptionsArea{
@@ -364,14 +366,48 @@
 .homeOptions button:nth-of-type(2){
   border-radius: 0rem 0rem 2rem 2rem;
 }
+
 .homeOptions button:nth-of-type(3){
   border-radius: 0rem 2rem 0rem 2rem;
 }
-
-
 /*____________FINISH_____________*/
 
+/*_________Store Screen_________*/
+.storeDisplay{
+  width: 22rem;
+  text-align: center;
+}
 
+.storeDisplay h1{
+  color: gold;
+}
+
+.billboard{
+  background-image: url("./assets/blank_store_sign.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 3rem;
+  padding-bottom: 1rem;
+  margin: 0;
+}
+.storeItemArea {
+  background-image: url("./assets/storefront.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  padding: 2rem 0;
+}
+.storeDisplay img{
+  max-width: 6rem;
+}
+
+.shelf{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+/*____________FINISH_____________*/
 /*_________Error Screen_________*/
 
 .error{
@@ -414,10 +450,17 @@
     max-height: 15rem;
   }
 
-  .displayArea, .messageArea, .gameOptionsArea{
+  .displayArea, .messageArea, .gameOptionsArea, .storeDisplay{
     width: 45rem;
   }
 
+  .storeDisplay img {
+    max-height: ;
+  }
+  .billboard{
+    padding-top: 7rem;
+    padding-bottom: 3.5rem;
+  }
 }
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 /*  Laptops and small monitors */

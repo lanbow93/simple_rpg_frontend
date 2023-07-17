@@ -3,6 +3,7 @@ import HomeScreen from "../components/HomeScreen"
 import MessageBox from "../components/MessageBox"
 import GameOptions from "../components/GameOptions"
 import { useState } from "react"
+import Store from "../components/Store"
 
 function PlayPage(props){
     console.log(props)
@@ -29,16 +30,15 @@ function PlayPage(props){
     const menuOptions = {
         home:
         <div className="homeOptions">
-        <button onClick={ goToFight }>Fight</button>
-        <button onClick={ goToStore } >Store</button>
-        <button onClick={ goToInventory }>Inventory</button>
+            <button onClick={ goToFight }>Fight</button>
+            <button onClick={ goToStore } >Store</button>
+            <button onClick={ goToInventory }>Inventory</button>
         </div>
     }
     return <div className="playArea"> 
-        {currentScreen === "home" ? <HomeScreen name={user.name} classType={user.classType} health={user.health} experience={user.experience}/> : ""}
-        <MessageBox screenMessage={messageToDisplay} />
-        <GameOptions buttonOptions={currentScreen === "home" ? menuOptions.home : ""} />
-        
+        {currentScreen === "home" ? <HomeScreen name={user.name} classType={user.classType} health={user.health} experience={user.experience}/> : currentScreen === "store" ? <Store /> : ""}
+        {currentScreen === "home" ? <MessageBox hasBorder={true} /> : <MessageBox />  }
+        <GameOptions buttonOptions={currentScreen === "home" ? menuOptions.home : menuOptions.home } />
     </div>
 }
 
