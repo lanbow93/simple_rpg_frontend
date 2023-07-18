@@ -37,8 +37,8 @@ function PlayPage(props){
     }
     return <div className="playArea"> 
         {currentScreen === "home" ? <HomeScreen name={user.name} classType={user.classType} health={user.health} experience={user.experience}/> : currentScreen === "store" ? <Store /> : ""}
-        {currentScreen === "home" ? <MessageBox hasBorder={true} /> : <MessageBox />  }
-        <GameOptions buttonOptions={currentScreen === "home" ? menuOptions.home : menuOptions.home } />
+        {currentScreen === "home" ? <MessageBox borderStatus={"addBorder"} screenMessage={messageToDisplay}/> : <MessageBox screenMessage={messageToDisplay} />  }
+        {currentScreen === "home" ? <GameOptions borderStatus={"addBorder"} buttonOptions={menuOptions.home} /> : <GameOptions buttonOptions={menuOptions.home} />  }
     </div>
 }
 

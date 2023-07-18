@@ -309,7 +309,7 @@
 .displayArea, .messageArea, .gameOptionsArea, .storeItemArea{
   width: 22rem;
 }
-.gameBorder {
+.gameBorder, .addBorder {
   border: .5rem groove black;
 }
 .messageArea, .gameOptionsArea{
@@ -454,9 +454,7 @@
     width: 45rem;
   }
 
-  .storeDisplay img {
-    max-height: ;
-  }
+
   .billboard{
     padding-top: 7rem;
     padding-bottom: 3.5rem;

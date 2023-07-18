@@ -1,5 +1,5 @@
 function GameOptions(props){
-    return <div className="gameOptionsArea">
+    return <div className={`gameOptionsArea ${props.borderStatus}`}>
         {props.buttonOptions}
     </div>
 }

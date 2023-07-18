@@ -6,7 +6,7 @@ import { gameDetails } from "../utils/gameDetails"
 
 function HomeScreen(props){
     return <div className="homeScreen">
-        <div className="displayArea">
+        <div className="displayArea addBorder">
             <h1>{props.name}</h1>
             <div className="healthStats">
                 <h3>Health</h3>
