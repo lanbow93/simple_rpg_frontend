@@ -3,37 +3,37 @@ export const gameDetails = {
         weapons: {
             wand: {
                 damage: 2,
-                cost: 10,
+                cost: 5,
             },
             staff: {
                 damage: 4,
-                cost: 20
+                cost: 10
             },
             grimoire: {
                 damage: 6,
-                cost: 30
+                cost: 20
             },
             relic: {
                 damage: 8,
-                cost: 40
+                cost: 30
             }
         },
         armors: {
             "novice robe":{
                 defense: 2,
-                cost: 10
+                cost: 5
             },
             "apprentice robe":{
                 defense: 4,
-                cost: 20
+                cost: 10
             },
             "journeyman robe":{
                 defense: 6,
-                cost: 30
+                cost: 20
             },
             "archmage robe":{
                 defense: 8,
-                cost: 40
+                cost: 30
             }
         },
         stats: {
@@ -44,37 +44,37 @@ export const gameDetails = {
         weapons: {
             sword: {
                 damage: 2,
-                cost: 10
+                cost: 5
             },
             mace: {
                 damage: 4,
-                cost: 20
+                cost: 10
             },
             broadsword: {
                 damage: 6,
-                cost: 30
+                cost: 20
             },
             "master sword": {
                 damage: 8,
-                cost: 40
+                cost: 30
             }
         },
         armors: {
             chainmail:{
                 defense: 2,
-                cost: 10
+                cost: 5
             },
             "metal plating":{
                 defense: 4,
-                cost: 20
+                cost: 10
             },
             "diamond plating":{
                 defense: 6,
-                cost: 30
+                cost: 20
             },
             "adamantine plating": {
                 defense: 8,
-                cost: 40
+                cost: 30
             }
         },
         stats: {
@@ -85,28 +85,36 @@ export const gameDetails = {
         weapons: {
             bow: {
                 damage: 2,
+                cost: 5
+            },
+            "poisoned bow": {
+                damage: 4,
                 cost: 10
             },
             dagger: {
-                damage: 4,
+                damage: 6,
                 cost: 20
             },
             "poisoned dagger": {
-                damage: 6,
+                damage: 8,
                 cost: 30
             }
         },
         armors: {
-            "cloak":{
+            cloak:{
                 defense: 2,
+                cost: 5
+            },
+            "assassin's mantle": {
+                defence: 4,
                 cost: 10
             },
-            "veil of mystery":{
-                defense: 4,
+            "veil of shadows":{
+                defense: 6,
                 cost: 20
             },
             "reaper's robe":{
-                defense: 6,
+                defense: 8,
                 cost: 30
             },
         },
@@ -153,7 +161,7 @@ export const gameDetails = {
             gold: 10
         }
     },
-    general: {
+    generic: {
         items: {
             "weak potion": {
                 heal: 7,

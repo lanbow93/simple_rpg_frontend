@@ -6,7 +6,6 @@ import { useState } from "react"
 import Store from "../components/Store"
 
 function PlayPage(props){
-    console.log(props)
     const location = useLocation()
     const {user, message} = location.state
     const [currentScreen, setCurrentScreen] = useState("home")

@@ -4,9 +4,10 @@ import weakHealthPotionIcon from "../assets/weakHealthPotionIcon.png"
 
 
 function ShopItem(props){
+    console.log(props)
     return <div className="shopItem">
         <img src={metalPlatingIcon} alt="" />
-        <p>10 Gold</p>
+        <p>{props.cost} Gold</p>
     </div>
 }
 

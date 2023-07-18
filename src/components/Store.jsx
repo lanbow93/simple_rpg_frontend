@@ -7,9 +7,9 @@ function Store(props){
             <h1>Ye Olde Shoppe</h1>
         </div>
         <div className="storeItemArea">
-            <Shelf category="weapons" classtype={props.classType} />
-            <Shelf category="armors" classtype={props.classType} />
-            <Shelf category="potions" classtype={props.classType} />
+            <Shelf category="weapons" classType={props.classType} />
+            <Shelf category="armors" classType={props.classType} />
+            <Shelf category="items" classType="generic" />
         </div>  
     </div>
 }
