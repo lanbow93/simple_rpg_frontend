@@ -12,7 +12,7 @@ function Shelf(props){
     }
     console.log(storeItemsToMap)
     return <div className="shelf">
-        {storeItemsToMap.map( (item) =>  <ShopItem item={item} classType={props.classType} cost={targetObject[item].cost} /> )}
+        {storeItemsToMap.map( (item) =>  <ShopItem item={item} classType={props.classType} cost={targetObject[item].cost} itemType={props.category} /> )}
     </div>
 }
 
