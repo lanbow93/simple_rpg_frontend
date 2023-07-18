@@ -396,15 +396,24 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  padding: 2rem 0;
 }
 .storeDisplay img{
   max-width: 6rem;
+  margin-top: 1rem;
 }
 
 .shelf{
   display: flex;
   justify-content: space-evenly;
+}
+
+.shelf p{
+  background-image: url("./assets/blank_store_sign.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  color: gold;
+  padding: .2rem;
+  border-radius: 5px;
 }
 
 /*____________FINISH_____________*/
@@ -450,7 +459,7 @@
     max-height: 15rem;
   }
 
-  .displayArea, .messageArea, .gameOptionsArea, .storeDisplay{
+  .displayArea, .messageArea, .gameOptionsArea, .storeDisplay, .storeItemArea{
     width: 45rem;
   }
 
