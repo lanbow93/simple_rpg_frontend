@@ -1,7 +1,7 @@
-import armorIcon from "../assets/armorIcon.png"
+import metalPlatingIcon from "../assets/metalPlatingIcon.png"
 function ShopItem(props){
     return <div className="shopItem">
-        <img src={armorIcon} alt="" />
+        <img src={metalPlatingIcon} alt="" />
         <p>10 Gold</p>
     </div>
 }

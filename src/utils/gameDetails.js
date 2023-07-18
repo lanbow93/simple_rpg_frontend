@@ -3,7 +3,7 @@ export const gameDetails = {
         weapons: {
             wand: {
                 damage: 2,
-                cost: 10
+                cost: 10,
             },
             staff: {
                 damage: 4,
@@ -12,6 +12,10 @@ export const gameDetails = {
             grimoire: {
                 damage: 6,
                 cost: 30
+            },
+            relic: {
+                damage: 8,
+                cost: 40
             }
         },
         armors: {
@@ -23,10 +27,14 @@ export const gameDetails = {
                 defense: 4,
                 cost: 20
             },
-            "master robe":{
+            "journeyman robe":{
                 defense: 6,
                 cost: 30
             },
+            "archmage robe":{
+                defense: 8,
+                cost: 40
+            }
         },
         stats: {
             health: 20
@@ -45,6 +53,10 @@ export const gameDetails = {
             broadsword: {
                 damage: 6,
                 cost: 30
+            },
+            "master sword": {
+                damage: 8,
+                cost: 40
             }
         },
         armors: {
@@ -60,6 +72,10 @@ export const gameDetails = {
                 defense: 6,
                 cost: 30
             },
+            "adamantine plating": {
+                defense: 8,
+                cost: 40
+            }
         },
         stats: {
             health: 20
@@ -135,6 +151,22 @@ export const gameDetails = {
             weapon: "fire breath",
             armor: "scales",
             gold: 10
+        }
+    },
+    general: {
+        items: {
+            "weak potion": {
+                heal: 7,
+                cost: 10
+            },
+            potion:{
+                heal: 10,
+                cost: 20
+            },
+            "strong potion": {
+                heal: 15,
+                cost: 30
+            }
         }
     }
 }
