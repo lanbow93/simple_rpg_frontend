@@ -1,4 +1,8 @@
 import metalPlatingIcon from "../assets/metalPlatingIcon.png"
+import diamondArmorIcon from "../assets/diamondArmorIcon.png"
+import goldArmorIcon from "../assets/goldArmorIcon.png"
+import broadswordIcon from "../assets/broadswordIcon.png"
+import masterSwordIcon from "../assets/masterSwordIcon.png"
 import maceIcon from "../assets/maceIcon.png"
 import weakHealthPotionIcon from "../assets/weakHealthPotionIcon.png"
 import healthPotionIcon from "../assets/healthPotionIcon.png"
@@ -17,9 +21,9 @@ function determineImageToUse(itemName){
         case "mace":
             return maceIcon
         case "broadsword":
-            return maceIcon
+            return broadswordIcon
         case "master sword":
-            return maceIcon
+            return masterSwordIcon
         case "poisoned bow":
             return maceIcon
         case "dagger":
@@ -38,9 +42,9 @@ function determineImageToUse(itemName){
         case "metal plating":
             return metalPlatingIcon
         case "diamond plating":
-            return metalPlatingIcon
+            return goldArmorIcon
         case "adamantine plating":
-            return metalPlatingIcon
+            return diamondArmorIcon
         case "assassin's mantle":
             return metalPlatingIcon
         case "veil of shadows":
