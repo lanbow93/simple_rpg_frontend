@@ -7,14 +7,18 @@ import Store from "../components/Store"
 
 function PlayPage(props){
     const location = useLocation()
-    const {user, message} = location.state
+    const {user} = location.state
     const [currentScreen, setCurrentScreen] = useState("home")
-    const [messageToDisplay, setMessageToDisplay] = useState(message ? message : "Select An Option")
-    
+    const [messageToDisplay, setMessageToDisplay] = useState("Select An Option")
+    const [previousScreen, setPreviousScreen] = useState("")
     function handleItemSelected(item){
         setMessageToDisplay(item)
     }
     
+    function goToHome(){
+        setCurrentScreen("home")
+        setMessageToDisplay("Select An Option")
+    }
     function goToFight(){
         setCurrentScreen("fight")
         setMessageToDisplay("This is your setup\nAre you ready to fight?")
@@ -22,6 +26,7 @@ function PlayPage(props){
     function goToStore(){
         setCurrentScreen("store")
         setMessageToDisplay("What would you like to purchase?")
+        setPreviousScreen("home")
     }
 
     function goToInventory(){
@@ -35,13 +40,18 @@ function PlayPage(props){
             <button onClick={ goToFight }>Fight</button>
             <button onClick={ goToStore } >Store</button>
             <button onClick={ goToInventory }>Inventory</button>
+        </div>,
+        store:
+        <div className="storeOptions">
+            <button onClick={previousScreen === "home" ? goToHome : ""}>Back</button>
+            <button>Purchase</button>
         </div>
     }
 
     return <div className="playArea"> 
         {currentScreen === "home" ? <HomeScreen name={user.name} classType={user.classType} health={user.health} experience={user.experience}/> : currentScreen === "store" ? <Store classType={user.classType} setMessageToDisplay={handleItemSelected} /> : ""}
         {currentScreen === "home" ? <MessageBox borderStatus={"addBorder"} screenMessage={messageToDisplay}/> : <MessageBox borderStatus="" screenMessage={messageToDisplay} />  }
-        {currentScreen === "home" ? <GameOptions borderStatus={"addBorder"} buttonOptions={menuOptions.home} /> : <GameOptions borderStatus="" buttonOptions={menuOptions.home} />  }
+        {currentScreen === "home" ? <GameOptions borderStatus={"addBorder"} buttonOptions={menuOptions.home} /> : <GameOptions borderStatus="" buttonOptions={menuOptions.store} />  }
     </div>
 }
 
