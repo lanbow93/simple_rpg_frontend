@@ -469,11 +469,11 @@
     padding-top: 7rem;
     padding-bottom: 3.5rem;
   }
-    .storeDisplay img{
-      max-width: 7rem;
-      max-height: 6rem;
-      margin-top: 1rem;
-    }
+  .storeDisplay img{
+    max-width: 7rem;
+    max-height: 6rem;
+    margin-top: 1rem;
+  }
 }
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 /*  Laptops and small monitors */

@@ -8,7 +8,6 @@ import weakHealthPotionIcon from "../assets/weakHealthPotionIcon.png"
 import healthPotionIcon from "../assets/healthPotionIcon.png"
 import strongHealthPotionIcon from "../assets/strongHealthPotionIcon.png"
 
-
 function determineImageToUse(itemName){
     switch (itemName) {
         // Weapons
@@ -64,10 +63,12 @@ function determineImageToUse(itemName){
 
 }
 
+
+
 function ShopItem(props){
-    
-    return <div className="shopItem">
-        <img src={ determineImageToUse(props.item)} />
+
+    return <div className="shopItem" value={props.item} onClick={(e) => props.setMessageToDisplay(props.item) } >
+        <img src={ determineImageToUse(props.item)}  />
         <p>{props.cost} Gold</p>
     </div>
 }
