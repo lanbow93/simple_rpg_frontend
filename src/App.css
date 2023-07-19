@@ -345,6 +345,9 @@
   align-items: center;
 }
 
+.messageArea h1 {
+  margin: 1rem;
+}
 .gameOptionsArea {
   background-color: gold;
   text-align: center;

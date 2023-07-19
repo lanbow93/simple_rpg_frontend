@@ -63,13 +63,31 @@ function determineImageToUse(itemName){
 
 }
 
+function handleSelection(itemName, itemObject, changeDisplayCallback){
 
+    const properName = itemName.replace(/^(.)|\s+(.)/g, c => c.toUpperCase())
+    let sentence = ""
+    if(itemObject.defense){
+        sentence = `${properName} will defend for ${itemObject.defense} points`
+    } else if(itemObject.damage){
+        sentence = `${properName} adds ${itemObject.damage} damage`
+
+    } else if(itemObject.heal){
+        sentence = `${properName} will heal for ${itemObject.heal} points`
+    } else {
+
+    }
+
+    changeDisplayCallback(sentence)
+}
 
 function ShopItem(props){
 
-    return <div className="shopItem" value={props.item} onClick={(e) => props.setMessageToDisplay(props.item) } >
+    console.log(props.itemDetails)
+
+    return <div className="shopItem" value={props.item} onClick={(e) => handleSelection(props.item, props.itemDetails, props.setMessageToDisplay ) } >
         <img src={ determineImageToUse(props.item)}  />
-        <p>{props.cost} Gold</p>
+        <p>{props.itemDetails.cost} Gold</p>
     </div>
 }
 
