@@ -8,9 +8,9 @@ function Store(props){
             <h1>Ye Olde Shoppe</h1>
         </div>
         <div className="storeItemArea">
-            <Shelf category="weapons" classType={props.classType} setMessageToDisplay={props.setMessageToDisplay} />
-            <Shelf category="armors" classType={props.classType} setMessageToDisplay={props.setMessageToDisplay}/>
-            <Shelf category="items" classType="generic" setMessageToDisplay={props.setMessageToDisplay}/>
+            <Shelf category="weapons" classType={props.classType} handleItemSelected={props.handleItemSelected} />
+            <Shelf category="armors" classType={props.classType} handleItemSelected={props.handleItemSelected}/>
+            <Shelf category="items" classType="generic" handleItemSelected={props.handleItemSelected}/>
         </div>  
     </div>
 }

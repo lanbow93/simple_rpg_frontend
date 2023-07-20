@@ -11,7 +11,7 @@ function Shelf(props){
         storeItemsToMap.shift()
     }
     return <div className="shelf">
-        {storeItemsToMap.map( (item) =>  <ShopItem item={item} itemDetails={targetObject[item]} setMessageToDisplay={props.setMessageToDisplay} key={item} /> )}
+        {storeItemsToMap.map( (item) =>  <ShopItem item={item} itemDetails={targetObject[item]} handleItemSelected={props.handleItemSelected} key={item} /> )}
     </div>
 }
 
