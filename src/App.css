@@ -348,6 +348,9 @@
 .messageArea h1 {
   margin: 1rem;
 }
+.messageArea h2 {
+  margin: 1rem;
+}
 .gameOptionsArea {
   background-color: gold;
   text-align: center;

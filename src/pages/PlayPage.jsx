@@ -42,7 +42,14 @@ function PlayPage(props){
     }
 
     function handlePurchase(){
-        console.log(selectedStoreItem + selectedItemPrice)
+        if(selectedItemPrice > 0 && user.gold >= selectedItemPrice) {
+            user.gold -= selectedItemPrice
+            user.inventory.push(selectedStoreItem)
+            setMessageToDisplay(`You have purchased the ${selectedStoreItem}.\nRemaining Gold: ${user.gold}`)
+        } else {
+            setMessageToDisplay(`You do not have enough gold to purchase the ${selectedStoreItem}`)
+        }
+        console.log(user.inventory)
     }
 
     const menuOptions = {
