@@ -13,11 +13,14 @@ function HomeScreen(props){
                 <h2>{props.health}/{gameDetails[props.classType].stats.health}</h2>
             </div>
             <div className="characterIcon">
-                <img src={props.classType === "warrior" ? warriorIcon : props.classType === "wizard" ? wizardIcon : rogueIcon} alt="" />
+                <img src={props.classType === "warrior" ? warriorIcon : props.classType === "wizard" ? wizardIcon : rogueIcon} alt={`Image icon of a ${props.classType}`} />
             </div>
             <div className="currentLevel">
                 <h3>Level</h3>
                 <h2>{Math.floor(props.experience / 10) + 1}</h2>
+            </div>
+            <div className="currentGold">
+                <h3>Current Gold: {props.gold}</h3>
             </div>
         </div>
     </div>

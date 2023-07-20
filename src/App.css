@@ -334,6 +334,10 @@
 .displayArea img{
   max-height: 10rem;
 }
+.currentGold{
+  grid-column: span 3;
+  margin: 1rem;
+}
 
 .messageArea{
   text-align: center;
