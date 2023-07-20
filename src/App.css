@@ -452,6 +452,16 @@
 }
 
 /*____________FINISH_____________*/
+
+/*_________Inventory Menu_________*/
+.inventoryDisplay{
+  width: 22rem;
+  background-color: gold;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+/*____________FINISH_____________*/
 /*_________Error Screen_________*/
 
 .error{
@@ -494,7 +504,7 @@
     max-height: 15rem;
   }
 
-  .displayArea, .messageArea, .gameOptionsArea, .storeDisplay, .storeItemArea{
+  .displayArea, .messageArea, .gameOptionsArea, .storeDisplay, .storeItemArea, .inventoryDisplay{
     width: 45rem;
   }
 
