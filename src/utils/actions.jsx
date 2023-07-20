@@ -79,7 +79,7 @@ export const createCharacterAction = async ({request}) => {
         armor: formData.get("armor"),
         health: 20,
         experience: 0,
-        gold: 5,
+        gold: 30,
         inventory: formData.get("inventory")
     }
     const response = await fetch(URL + "/character", {
