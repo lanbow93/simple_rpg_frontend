@@ -4,6 +4,7 @@ import MessageBox from "../components/MessageBox"
 import GameOptions from "../components/GameOptions"
 import { useState } from "react"
 import Store from "../components/Store"
+import { URL } from "../utils/url"
 
 function PlayPage(props){
     const location = useLocation()
@@ -14,14 +15,22 @@ function PlayPage(props){
     const [previousScreen, setPreviousScreen] = useState("")
     const [selectedStoreItem, setSelectedStoreItem] = useState("")
     const [selectedItemPrice, setSelectedItemPrice] = useState(0)
+    // Post to backend to save character state
 
+    const saveCharacterState = async () => {
+        const response = await fetch(URL + "/character/" + user._id, {
+            method: "put",
+            headers: {"Content-Type": "application/json"},
+            credentials: "include",
+            body: JSON.stringify(user)
+        })
+    }
     // Displays message on screen and stores item name and cost for possible purchase
     function handleItemSelected(message, item, cost){
         setMessageToDisplay(message)
         setSelectedStoreItem(item)
         setSelectedItemPrice(cost)
     }
-    
     function goToHome(){
         setCurrentScreen("home")
         setMessageToDisplay("Select An Option")
@@ -41,16 +50,16 @@ function PlayPage(props){
         setMessageToDisplay("Browsing Inventory")
     }
     // 
-    function handlePurchase(){
+    async function handlePurchase(){
         if(selectedItemPrice > 0 && currentGold >= selectedItemPrice) {
             setCurrentGold(currentGold - selectedItemPrice)
             user.gold -= selectedItemPrice
             user.inventory.push(selectedStoreItem)
+            await saveCharacterState()
             setMessageToDisplay(`You have purchased the ${selectedStoreItem}.\nRemaining Gold: ${user.gold}`)
         } else {
             setMessageToDisplay(`You do not have enough gold to purchase the ${selectedStoreItem}`)
         }
-        console.log(user.inventory)
     }
 
     const menuOptions = {
