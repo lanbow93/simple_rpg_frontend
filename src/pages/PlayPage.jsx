@@ -34,23 +34,26 @@ function PlayPage(props){
 
     // Initial functions to change the screen state
     function goToHome(){
+        setPreviousScreen(currentScreen)
         setCurrentScreen("home")
         setMessageToDisplay("Select An Option")
+        setSelectedItemPrice(0)
+        setSelectedStoreItem("")
     }
     function goToFight(){
+        setPreviousScreen(currentScreen)
         setCurrentScreen("fight")
         setMessageToDisplay("This is your setup\nAre you ready to fight?")
     }
     function goToStore(){
+        setPreviousScreen(currentScreen)
         setCurrentScreen("store")
         setMessageToDisplay("What would you like to purchase?")
-        setPreviousScreen("home")
     }
     function goToInventory(){
         setPreviousScreen(currentScreen)
         setCurrentScreen("inventory")
         setMessageToDisplay("Browsing Inventory")
-        
     }
     // Function to purchase on parent to trigger change in child components
     async function handlePurchase(){
@@ -80,17 +83,36 @@ function PlayPage(props){
         </div>,
         inventory:
         <div className="inventoryOptions">
-            <h1>Inventory</h1>
+            <button onClick={previousScreen === "home" ? goToHome : ""}>Back</button>
         </div>
+    }
+    // Used to determine what is displayed on the screen
+    function configureScreenLayout(){
+        if(currentScreen === "home"){
+            return <>
+                <HomeScreen name={user.name} classType={user.classType} health={user.health} experience={user.experience} gold={currentGold}/>
+                <MessageBox borderStatus={"addBorder"} screenMessage={messageToDisplay}/>
+                <GameOptions borderStatus={"addBorder"} buttonOptions={menuOptions.home} />
+            </>
+        }
+        if(currentScreen === "store"){
+            return <>
+                <Store classType={user.classType} handleItemSelected={handleItemSelected} />
+                <MessageBox borderStatus="" screenMessage={messageToDisplay} />
+                <GameOptions borderStatus="" buttonOptions={menuOptions.store} />
+            </>
+        }
+        if (currentScreen === "inventory"){
+            return<>
+                <InventoryScreen inventory={user.inventory} classType={user.classType}/>
+                <MessageBox borderStatus="" screenMessage={messageToDisplay} />
+                <GameOptions borderStatus="" buttonOptions={menuOptions.store} />
+            </>
+        }
     }
 
     return <div className="playArea"> 
-        {/* Content Section */}
-        {currentScreen === "home" ? <HomeScreen name={user.name} classType={user.classType} health={user.health} experience={user.experience} gold={currentGold}/> : currentScreen === "store" ? <Store classType={user.classType} handleItemSelected={handleItemSelected} /> : currentScreen === "inventory" ? <InventoryScreen inventory={user.inventory} /> : "" }
-        {/* Message box Section */}
-        {currentScreen === "home" ? <MessageBox borderStatus={"addBorder"} screenMessage={messageToDisplay}/> : <MessageBox borderStatus="" screenMessage={messageToDisplay} />  }
-        {/* Buttons Section */}
-        {currentScreen === "home" ? <GameOptions borderStatus={"addBorder"} buttonOptions={menuOptions.home} /> : <GameOptions borderStatus="" buttonOptions={menuOptions.store} />  }
+        {configureScreenLayout()}
     </div>
 }
 

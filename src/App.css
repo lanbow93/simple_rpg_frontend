@@ -460,6 +460,16 @@
   margin-top: 1rem;
   text-align: center;
 }
+.itemSection{
+  background-image: url("./assets/bagIcon.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 100%;
+  height: 30rem;
+  margin-bottom: 1rem;
+}
+
 
 /*____________FINISH_____________*/
 /*_________Error Screen_________*/

@@ -88,12 +88,12 @@ function handleSelection(itemName, itemObject, changeDisplayCallback){
     changeDisplayCallback(sentence, itemName, itemObject.cost)
 }
 
-function ShopItem(props){
+function DisplayItem(props){
 
-    return <div className="shopItem" value={props.item} onClick={(e) => handleSelection(props.item, props.itemDetails, props.handleItemSelected ) } >
+    return <div className="displayItem" value={props.item} onClick={(e) => handleSelection(props.item, props.itemDetails, props.handleItemSelected ) } >
         <img src={ determineImageToUse(props.item)}  />
         <p>{props.itemDetails.cost} Gold</p>
     </div>
 }
 
-export default ShopItem
+export default DisplayItem
