@@ -89,7 +89,7 @@ function handleSelection(itemName, itemObject, changeDisplayCallback){
 }
 
 function DisplayItem(props){
-
+    console.log(props.itemDetails)
     return <div className="displayItem" value={props.item} onClick={(e) => handleSelection(props.item, props.itemDetails, props.handleItemSelected ) } >
         <img src={ determineImageToUse(props.item)}  />
         <p>{props.itemDetails.cost} Gold</p>
