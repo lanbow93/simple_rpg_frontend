@@ -5,6 +5,7 @@ import GameOptions from "../components/GameOptions"
 import { useState } from "react"
 import Store from "../components/Store"
 import { URL } from "../utils/url"
+import { gameDetails } from "../utils/gameDetails"
 import InventoryScreen from "../components/InventoryScreen"
 
 function PlayPage(props){
@@ -34,6 +35,7 @@ function PlayPage(props){
         setSelectedItemPrice(cost)
     }
 
+    // Effects of w3hen item is clicked in inventory menu
     function handleInventoryItemSelected(message, item, cost){
         setMessageToDisplay(message)
         setSelectedInventoryItem(item)
@@ -45,13 +47,19 @@ function PlayPage(props){
         setPreviousScreen(currentScreen)
         setCurrentScreen("home")
         setMessageToDisplay("Select An Option")
-        setSelectedItemPrice(0)
         setSelectedStoreItem("")
+        setSelectedItemPrice(0)
+        setSelectedInventoryItemPrice(0)
+        setSelectedInventoryItem("")
     }
     function goToFight(){
         setPreviousScreen(currentScreen)
         setCurrentScreen("fight")
         setMessageToDisplay("This is your setup\nAre you ready to fight?")
+        setSelectedStoreItem("")
+        setSelectedItemPrice(0)
+        setSelectedInventoryItemPrice(0)
+        setSelectedInventoryItem("")
     }
     function goToStore(){
         setPreviousScreen(currentScreen)
@@ -76,6 +84,19 @@ function PlayPage(props){
             setMessageToDisplay(`You do not have enough gold to purchase the ${selectedStoreItem}`)
         }
     }
+    async function handleItemUse(){
+        if (gameDetails[user.classType].weapons[selectedInventoryItem]){
+            console.log(gameDetails[user.classType].weapons[selectedInventoryItem])
+        }
+
+        if (gameDetails[user.classType].armors[selectedInventoryItem]){
+            console.log(gameDetails[user.classType].armors[selectedInventoryItem])
+        }
+
+        if (gameDetails.generic.weapons[selectedInventoryItem]){
+            console.log(gameDetails[user.classType].items[selectedInventoryItem])
+        }
+    }
     // Way to determine what buttons are put on the screen
     const menuOptions = {
         home:
@@ -87,12 +108,12 @@ function PlayPage(props){
         store:
         <div className="storeOptions">
             <button onClick={previousScreen === "home" ? goToHome : ""}>Back</button>
-            {selectedItemPrice === 0 ? <button onClick={handlePurchase} disabled>Purchase</button> : <button onClick={handlePurchase}>Purchase</button>}
+            {selectedItemPrice === 0 ? <button onClick={""} disabled>Purchase</button> : <button onClick={handlePurchase}>Purchase</button>}
         </div>,
         inventory:
         <div className="inventoryOptions">
             <button onClick={previousScreen === "home" ? goToHome : ""}>Back</button>
-            {selectedInventoryItemPrice === 0 ? <button onClick={handlePurchase} disabled>Use</button> : <button onClick={handlePurchase}>Purchase</button>}
+            {selectedInventoryItemPrice === 0 ? <button onClick={handleItemUse} disabled>{previousScreen === "store" ? "Sell" : "Use" }</button> : <button onClick={handleItemUse}>{previousScreen === "store" ? "Sell" : "Use" }</button>}
         </div>
     }
     // Used to determine what is displayed on the screen

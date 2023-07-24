@@ -18,7 +18,6 @@ function determineItemObject(classType, item){
 }
 
 function InventoryScreen(props) {
-
     return <div className="inventoryDisplay">
         <div className="inventorySection">
             <h1>INVENTORY</h1>
