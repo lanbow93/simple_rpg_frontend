@@ -76,7 +76,7 @@ function handleSelection(itemName, itemObject, changeDisplayCallback){
    
     let sentence = ""
     if(itemObject.defense){
-        sentence = `${itemName} will defend for ${itemObject.defense} points`
+        sentence = `${itemName} will defend for ${itemObject.defense} points.`
     } else if(itemObject.damage){
         sentence = `${itemName} adds ${itemObject.damage} damage`
 

@@ -16,6 +16,8 @@ function PlayPage(props){
     const [previousScreen, setPreviousScreen] = useState("")
     const [selectedStoreItem, setSelectedStoreItem] = useState("")
     const [selectedItemPrice, setSelectedItemPrice] = useState(0)
+    const [selectedInventoryItem, setSelectedInventoryItem] = useState("")
+    const [selectedInventoryItemPrice, setSelectedInventoryItemPrice] = useState(0)
     // Post to backend to save character state
     const saveCharacterState = async () => {
         const response = await fetch(URL + "/character/" + user._id, {
@@ -30,6 +32,12 @@ function PlayPage(props){
         setMessageToDisplay(message)
         setSelectedStoreItem(item)
         setSelectedItemPrice(cost)
+    }
+
+    function handleInventoryItemSelected(message, item, cost){
+        setMessageToDisplay(message)
+        setSelectedInventoryItem(item)
+        setSelectedInventoryItemPrice(cost)
     }
 
     // Functions need to change the screen state
@@ -84,6 +92,7 @@ function PlayPage(props){
         inventory:
         <div className="inventoryOptions">
             <button onClick={previousScreen === "home" ? goToHome : ""}>Back</button>
+            {selectedInventoryItemPrice === 0 ? <button onClick={handlePurchase} disabled>Use</button> : <button onClick={handlePurchase}>Purchase</button>}
         </div>
     }
     // Used to determine what is displayed on the screen
@@ -104,9 +113,9 @@ function PlayPage(props){
         }
         if (currentScreen === "inventory"){
             return<>
-                <InventoryScreen inventory={user.inventory} classType={user.classType}/>
+                <InventoryScreen inventory={user.inventory} classType={user.classType} handleItemSelected={handleInventoryItemSelected}/>
                 <MessageBox borderStatus="" screenMessage={messageToDisplay} />
-                <GameOptions borderStatus="" buttonOptions={menuOptions.store} />
+                <GameOptions borderStatus="" buttonOptions={menuOptions.inventory} />
             </>
         }
     }
