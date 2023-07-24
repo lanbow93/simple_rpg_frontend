@@ -2,6 +2,7 @@
 import { gameDetails } from "../utils/gameDetails"
 import DisplayItem from "./DisplayItem"
 
+// Needed to pass the correct item object to be accessed by the DisplayItem child component
 function determineItemObject(classType, item){
     if (gameDetails[classType].weapons[item]){
         return  gameDetails[classType].weapons[item]
@@ -17,15 +18,13 @@ function determineItemObject(classType, item){
 }
 
 function InventoryScreen(props) {
-    // Pulls the object that includes character
-    
 
     return <div className="inventoryDisplay">
         <div className="inventorySection">
             <h1>INVENTORY</h1>
             <div className="itemSection">
                 <div className="itemArea">
-                    {props.inventory.map((item) => <DisplayItem item={item} itemDetails={determineItemObject(props.classType,item)} handleItemSelected={props.handleItemSelected}/>)}
+                    {props.inventory.map((item, index) => <DisplayItem item={item} itemDetails={determineItemObject(props.classType,item)} handleItemSelected={props.handleItemSelected} key={item + index} />)}
                 </div>
             </div>
         </div>

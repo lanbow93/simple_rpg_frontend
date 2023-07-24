@@ -32,7 +32,7 @@ function PlayPage(props){
         setSelectedItemPrice(cost)
     }
 
-    // Initial functions to change the screen state
+    // Functions need to change the screen state
     function goToHome(){
         setPreviousScreen(currentScreen)
         setCurrentScreen("home")
