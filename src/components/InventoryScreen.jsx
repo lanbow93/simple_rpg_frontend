@@ -1,5 +1,6 @@
-import ShopItem from "./ShopItem"
+
 import { gameDetails } from "../utils/gameDetails"
+import DisplayItem from "./DisplayItem"
 
 function InventoryScreen(props) {
     // Pulls the object that includes character
@@ -8,7 +9,9 @@ function InventoryScreen(props) {
         <div className="inventorySection">
             <h1>INVENTORY</h1>
             <div className="itemSection">
-                {props.inventory.map((item) => <ShopItem item={item} itemDetails={""} handleItemSelected={props.handleItemSelected}/>)}
+                <div className="itemArea">
+                    {props.inventory.map((item) => <DisplayItem item={item} itemDetails={""} handleItemSelected={props.handleItemSelected}/>)}
+                </div>
             </div>
         </div>
     </div>
