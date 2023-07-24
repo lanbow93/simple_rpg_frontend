@@ -93,8 +93,8 @@ function PlayPage(props){
             console.log(gameDetails[user.classType].armors[selectedInventoryItem])
         }
 
-        if (gameDetails.generic.weapons[selectedInventoryItem]){
-            console.log(gameDetails[user.classType].items[selectedInventoryItem])
+        if (gameDetails.generic.items[selectedInventoryItem]){
+            console.log(gameDetails.generic.items[selectedInventoryItem])
         }
     }
     // Way to determine what buttons are put on the screen
