@@ -85,17 +85,44 @@ function PlayPage(props){
         }
     }
     async function handleItemUse(){
+        // Case if inventory item to use is a weapon
         if (gameDetails[user.classType].weapons[selectedInventoryItem]){
-            console.log(gameDetails[user.classType].weapons[selectedInventoryItem])
+            if(user.weapon === selectedInventoryItem){
+                setMessageToDisplay("You currently have that item equipped")
+            }
+            else{
+                user.weapon = selectedInventoryItem
+                setMessageToDisplay(`You have equipped the ${user.weapon}`)
+            }
         }
-
+        // Case if inventory item to use is armor
         if (gameDetails[user.classType].armors[selectedInventoryItem]){
-            console.log(gameDetails[user.classType].armors[selectedInventoryItem])
+            if(user.armor === selectedInventoryItem){
+                setMessageToDisplay("You currently have that item equipped")
+            }
+            else{
+                user.armor = selectedInventoryItem
+                setMessageToDisplay(`You have equipped the ${user.armor}`)
+            }
+        }
+        // Case if using a item to heal and remove from inventory    
+        if (gameDetails.generic.items[selectedInventoryItem]){
+            const itemIndex = user.inventory.indexOf(selectedInventoryItem)
+            if(user.health === 20){
+                setMessageToDisplay("You are currently at full health")
+            } 
+            else if (user.health + gameDetails.generic.items[selectedInventoryItem].heal >= 20 ){
+                user.health = 20
+                setMessageToDisplay(`You have fully healed to ${user.health}/20`)
+                user.inventory.splice(itemIndex,1)
+            } else {
+                user.health += gameDetails.generic.items[selectedInventoryItem].heal
+                setMessageToDisplay(`You have healed to ${user.health}/20`)
+                user.inventory.splice(itemIndex,1)                
+            }
         }
 
-        if (gameDetails.generic.items[selectedInventoryItem]){
-            console.log(gameDetails.generic.items[selectedInventoryItem])
-        }
+        saveCharacterState()
     }
     // Way to determine what buttons are put on the screen
     const menuOptions = {
