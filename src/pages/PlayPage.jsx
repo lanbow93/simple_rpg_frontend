@@ -121,7 +121,6 @@ function PlayPage(props){
                 user.inventory.splice(itemIndex,1)                
             }
         }
-
         saveCharacterState()
     }
     // Way to determine what buttons are put on the screen
