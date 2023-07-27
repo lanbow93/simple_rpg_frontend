@@ -560,13 +560,33 @@
     display: grid;
   }
   .inventoryItems {
-    grid-template-columns: 8rem 8rem 8rem 8rem;
+    grid-template-columns: 7rem 7rem 7rem 7rem;
     justify-self: center;
+    margin-right: 1.5rem;
   }
 
   .statsInventoryScreen {
     font-size: 2rem;
     margin-top: 0;
+  }
+
+  .inventoryItems::-webkit-scrollbar {
+    width: 10px; /* Adjust the width of the scrollbar */
+    
+  }
+
+  .inventoryItems::-webkit-scrollbar-thumb {
+    background-color: white; /* Color of the thumb */
+    border-radius: 1rem; /* Rounded corners */
+  }
+
+  .inventoryItems::-webkit-scrollbar-track {
+    background-color: rgb(134, 27, 27);
+    border-radius: 1rem;
+    max-height: 80%;
+  }
+  .inventoryItems::-webkit-scrollbar-track-piece {
+    height: 2rem;
   }
 }
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
