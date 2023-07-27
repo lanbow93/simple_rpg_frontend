@@ -1,4 +1,4 @@
-
+// PARENT COMPONENT(S) - PlayPage
 import { gameDetails } from "../utils/gameDetails"
 import DisplayItem from "./DisplayItem"
 
@@ -24,8 +24,8 @@ function InventoryScreen(props) {
 
             <div className="itemSection">
                 <div className="statsInventoryScreen">
-                    <p>Health: </p>
-                    <p>Gold: </p>
+                    <p>Health: {props.health}/20</p>
+                    <p>Gold: {props.gold}</p>
                 </div>
                 <div className="itemArea">
                     <div className="inventoryItems">

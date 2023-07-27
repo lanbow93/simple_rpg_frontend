@@ -160,7 +160,7 @@ function PlayPage(props){
         }
         if (currentScreen === "inventory"){
             return<>
-                <InventoryScreen inventory={user.inventory} classType={user.classType} handleItemSelected={handleInventoryItemSelected}/>
+                <InventoryScreen inventory={user.inventory} gold={currentGold} health={user.health} classType={user.classType} handleItemSelected={handleInventoryItemSelected}/>
                 <MessageBox borderStatus="" screenMessage={messageToDisplay} />
                 <GameOptions borderStatus="" buttonOptions={menuOptions.inventory} />
             </>
