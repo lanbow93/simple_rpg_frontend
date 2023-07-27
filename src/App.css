@@ -475,7 +475,7 @@
 .statsInventoryScreen {
   display: flex;
   justify-content: space-around;
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin-top: 2rem;
   margin-bottom: 5.5rem;
   padding-top: 5.5rem;
@@ -562,6 +562,11 @@
   .inventoryItems {
     grid-template-columns: 8rem 8rem 8rem 8rem;
     justify-self: center;
+  }
+
+  .statsInventoryScreen {
+    font-size: 2rem;
+    margin-top: 0;
   }
 }
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
