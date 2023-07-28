@@ -7,6 +7,7 @@ import Store from "../components/Store"
 import { URL } from "../utils/url"
 import { gameDetails } from "../utils/gameDetails"
 import InventoryScreen from "../components/InventoryScreen"
+import FightScreen from "../components/FightScreen"
 
 function PlayPage(props){
     const location = useLocation()
@@ -140,6 +141,11 @@ function PlayPage(props){
         <div className="inventoryOptions">
             <button onClick={previousScreen === "home" ? goToHome : ""}>Back</button>
             {selectedInventoryItemPrice === 0 ? <button onClick={handleItemUse} disabled>{previousScreen === "store" ? "Sell" : "Use" }</button> : <button onClick={handleItemUse}>{previousScreen === "store" ? "Sell" : "Use" }</button>}
+        </div>,
+        fight:
+        <div className="inventoryOptions">
+            <button onClick={previousScreen === "home" ? goToHome : ""}>Back</button>
+            {selectedInventoryItemPrice === 0 ? <button onClick={handleItemUse} disabled>{previousScreen === "store" ? "Sell" : "Use" }</button> : <button onClick={handleItemUse}>{previousScreen === "store" ? "Sell" : "Use" }</button>}
         </div>
     }
     // Used to determine what is displayed on the screen
@@ -163,6 +169,13 @@ function PlayPage(props){
                 <InventoryScreen inventory={user.inventory} gold={currentGold} health={user.health} classType={user.classType} handleItemSelected={handleInventoryItemSelected}/>
                 <MessageBox borderStatus="" screenMessage={messageToDisplay} />
                 <GameOptions borderStatus="" buttonOptions={menuOptions.inventory} />
+            </>
+        }
+        if (currentScreen === "fight"){
+            return<>
+                <FightScreen />
+                <MessageBox borderStatus="" screenMessage={messageToDisplay} />
+                <GameOptions borderStatus="" buttonOptions={menuOptions.fight} />
             </>
         }
     }
