@@ -36,7 +36,7 @@ function PlayPage(props){
         setSelectedItemPrice(cost)
     }
 
-    // Effects of w3hen item is clicked in inventory menu
+    // Effects of when item is clicked in inventory menu
     function handleInventoryItemSelected(message, item, cost){
         setMessageToDisplay(message)
         setSelectedInventoryItem(item)
@@ -56,7 +56,7 @@ function PlayPage(props){
     function goToFight(){
         setPreviousScreen(currentScreen)
         setCurrentScreen("fight")
-        setMessageToDisplay("This is your setup\nAre you ready to fight?")
+        setMessageToDisplay(`${user.name} currently has ${user.weapon} and ${user.armor} equipped. Are you ready for battle?`)
         setSelectedStoreItem("")
         setSelectedItemPrice(0)
         setSelectedInventoryItemPrice(0)

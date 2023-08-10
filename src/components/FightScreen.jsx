@@ -1,4 +1,5 @@
 function FightScreen(props){
+    console.log(props)
     return <div className="fightDisplay">
         <div className="enemyArea">
             <h1>Enemy Area</h1>
