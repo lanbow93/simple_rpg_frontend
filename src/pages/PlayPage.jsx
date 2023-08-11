@@ -33,19 +33,20 @@ function PlayPage(props){
             body: JSON.stringify(user)
         })
     }
-
+    // Selecting enemy based on experience, assigning random name
     function generateEnemy(){
-        if(currentExperience < 20) {
+        if(currentExperience < 30) {
             setCurrentEnemyType("slime")
-            setCurrentEnemyHealth(gameDetails.slime.health)
-        } else if(currentExperience < 30){
+            setCurrentEnemyHealth(gameDetails.slime.stats.health)
+        } else if(currentExperience < 50){
             setCurrentEnemyType("werewolf")
-            setCurrentEnemyHealth(gameDetails.werewolf.health)
+            setCurrentEnemyHealth(gameDetails.werewolf.stats.health)
         } else {
             setCurrentEnemyType("dragon")
-            setCurrentEnemyHealth(gameDetails.dragon.health)
+            setCurrentEnemyHealth(gameDetails.dragon.stats.health)
         }
-
+        // Setting random name
+        setCurrentEnemyName(gameDetails.generic.names[Math.floor(Math.random()*gameDetails.generic.names.length)])
     }
     // Displays message on screen and stores item name and cost for possible purchase
     function handleItemSelected(message, item, cost){
@@ -73,6 +74,7 @@ function PlayPage(props){
     }
     function goToFight(){
         generateEnemy()
+        console.log({currentEnemyName}, {currentEnemyType}, {currentEnemyHealth})
         setPreviousScreen(currentScreen)
         setCurrentScreen("fight")
         setMessageToDisplay(`${user.name} currently has the ${user.weapon} and ${user.armor} equipped. A new creature has appeared.`)
@@ -156,14 +158,14 @@ function PlayPage(props){
         </div>,
         inventory:
         <div className="inventoryOptions">
-            <button onClick={previousScreen === "home" ? goToHome : ""}>Back</button>
+            <button onClick={previousScreen === "home" ? goToHome : previousScreen === "fight" ? goToFight : ""}>Back</button>
             {selectedInventoryItemPrice === 0 ? <button onClick={handleItemUse} disabled>{previousScreen === "store" ? "Sell" : "Use" }</button> : <button onClick={handleItemUse}>{previousScreen === "store" ? "Sell" : "Use" }</button>}
         </div>,
         fight:
         <div className="attackOptions">
             <button>Attack</button>
             <button>Item Bag</button>
-            <button onClick={previousScreen === "home" ? goToHome : ""}>Escape</button>
+            <button onClick={goToHome}>Escape</button>
             
         </div>
     }
