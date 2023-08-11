@@ -17,7 +17,7 @@ function HomeScreen(props){
             </div>
             <div className="currentLevel">
                 <h3>Level</h3>
-                <h2>{Math.floor(props.experience / 10) + 1}</h2>
+                <h2>{Math.floor(props.experience / 10)}</h2>
             </div>
             <div className="currentGold">
                 <h3>Current Gold: {props.gold}</h3>
