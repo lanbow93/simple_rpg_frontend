@@ -21,7 +21,7 @@ function PlayPage(props){
     const [selectedInventoryItem, setSelectedInventoryItem] = useState("")
     const [selectedInventoryItemPrice, setSelectedInventoryItemPrice] = useState(0)
     const [currentEnemyName, setCurrentEnemyName] = useState("")
-    
+    console.log(user)
     // Post to backend to save character state
     const saveCharacterState = async () => {
         const response = await fetch(URL + "/character/" + user._id, {

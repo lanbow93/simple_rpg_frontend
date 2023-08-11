@@ -78,7 +78,7 @@ export const createCharacterAction = async ({request}) => {
         weapon: formData.get("weapon"),
         armor: formData.get("armor"),
         health: 20,
-        experience: 0,
+        experience: 10,
         gold: 30,
         inventory: formData.get("inventory")
     }

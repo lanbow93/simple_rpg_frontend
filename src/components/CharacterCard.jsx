@@ -29,7 +29,7 @@ function CharacterCard(props) {
             <p>Class:</p>
             <p>Level:</p>
             <p className="details">{character.classType.charAt(0).toUpperCase() + character.classType.substring(1)}</p>
-            <p className="details">{Math.floor(character.experience / 10) + 1}</p>
+            <p className="details">{Math.floor(character.experience / 10)}</p>
         </div>
         <div className={modalClass}>
         <Form action={`/delete/${character._id}`} method="post">
