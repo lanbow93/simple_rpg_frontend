@@ -306,7 +306,7 @@
 .homeScreen, .storeDisplay{
   margin-top: 3rem;
 }
-.displayArea, .messageArea, .gameOptionsArea, .storeItemArea{
+.displayArea, .messageArea, .gameOptionsArea, .storeItemArea, .fightDisplay{
   width: 22rem;
 }
 .gameBorder, .addBorder {
@@ -501,6 +501,16 @@
 
 
 /*____________FINISH_____________*/
+
+/*_________Fight Screen_________*/
+
+.fightDisplay {
+
+}
+
+/*____________FINISH_____________*/
+
+
 /*_________Error Screen_________*/
 
 .error{
@@ -543,7 +553,7 @@
     max-height: 15rem;
   }
 
-  .displayArea, .messageArea, .gameOptionsArea, .storeDisplay, .storeItemArea, .inventoryDisplay{
+  .displayArea, .messageArea, .gameOptionsArea, .storeDisplay, .storeItemArea, .inventoryDisplay, .fightDisplay{
     width: 45rem;
   }
 

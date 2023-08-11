@@ -20,6 +20,8 @@ function PlayPage(props){
     const [selectedItemPrice, setSelectedItemPrice] = useState(0)
     const [selectedInventoryItem, setSelectedInventoryItem] = useState("")
     const [selectedInventoryItemPrice, setSelectedInventoryItemPrice] = useState(0)
+    const [currentEnemyName, setCurrentEnemyName] = useState("")
+    
     // Post to backend to save character state
     const saveCharacterState = async () => {
         const response = await fetch(URL + "/character/" + user._id, {
@@ -28,6 +30,10 @@ function PlayPage(props){
             credentials: "include",
             body: JSON.stringify(user)
         })
+    }
+
+    function generateEnemy(){
+
     }
     // Displays message on screen and stores item name and cost for possible purchase
     function handleItemSelected(message, item, cost){
@@ -54,9 +60,10 @@ function PlayPage(props){
         setSelectedInventoryItem("")
     }
     function goToFight(){
+        generateEnemy()
         setPreviousScreen(currentScreen)
         setCurrentScreen("fight")
-        setMessageToDisplay(`${user.name} currently has ${user.weapon} and ${user.armor} equipped. Are you ready for battle?`)
+        setMessageToDisplay(`${user.name} currently has the ${user.weapon} and ${user.armor} equipped. A new creature has appeared.`)
         setSelectedStoreItem("")
         setSelectedItemPrice(0)
         setSelectedInventoryItemPrice(0)
@@ -143,9 +150,11 @@ function PlayPage(props){
             {selectedInventoryItemPrice === 0 ? <button onClick={handleItemUse} disabled>{previousScreen === "store" ? "Sell" : "Use" }</button> : <button onClick={handleItemUse}>{previousScreen === "store" ? "Sell" : "Use" }</button>}
         </div>,
         fight:
-        <div className="inventoryOptions">
-            <button onClick={previousScreen === "home" ? goToHome : ""}>Back</button>
-            {selectedInventoryItemPrice === 0 ? <button onClick={handleItemUse} disabled>{previousScreen === "store" ? "Sell" : "Use" }</button> : <button onClick={handleItemUse}>{previousScreen === "store" ? "Sell" : "Use" }</button>}
+        <div className="homeOptions">
+            <button>Attack</button>
+            <button>Item Bag</button>
+            <button onClick={previousScreen === "home" ? goToHome : ""}>Escape</button>
+            
         </div>
     }
     // Used to determine what is displayed on the screen
@@ -179,6 +188,8 @@ function PlayPage(props){
             </>
         }
     }
+
+    
 
     return <div className="playArea"> 
         {configureScreenLayout()}

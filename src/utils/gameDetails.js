@@ -175,6 +175,7 @@ export const gameDetails = {
                 heal: 15,
                 cost: 30
             }
-        }
+        },
+        names: ["Drakonis", "Morbos", "Zephyrion", "Nyxar", "Xalos", "Vexalor", "Gloomfang", "Zaroth", "Vorgrath", "Lunaris", "Azgul", "Rendragor", "Sylvaris", "Zoltan", "Necronyx", "Frostbite", "Dreadmaw", "Venomshade", "Shadowclaw", "Ragnarok", "Rimuru Tempest"]
     }
 }
