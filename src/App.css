@@ -359,12 +359,12 @@
   background-color: gold;
   text-align: center;
 }
-.homeOptions {
+.homeOptions, .attackOptions {
   display: flex;
   justify-content: space-around;
 }
 
-.homeOptions button{
+.homeOptions button, .attackOptions button{
   margin: 1rem 0;
   padding: 1rem;
   min-width: 30%;
@@ -373,11 +373,11 @@
   background-color: #ffbf00;
   font-size: 1rem;
 }
-.homeOptions button:nth-of-type(2){
+.homeOptions button:nth-of-type(2), .attackOptions button:nth-of-type(2){
   border-radius: 0rem 0rem 2rem 2rem;
 }
 
-.homeOptions button:nth-of-type(3){
+.homeOptions button:nth-of-type(3), .attackOptions button:nth-of-type(3){
   border-radius: 0rem 2rem 0rem 2rem;
 }
 /*____________FINISH_____________*/

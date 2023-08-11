@@ -20,8 +20,10 @@ function PlayPage(props){
     const [selectedItemPrice, setSelectedItemPrice] = useState(0)
     const [selectedInventoryItem, setSelectedInventoryItem] = useState("")
     const [selectedInventoryItemPrice, setSelectedInventoryItemPrice] = useState(0)
+    const [currentExperience, setCurrentExperience] = useState(user.experience)
     const [currentEnemyName, setCurrentEnemyName] = useState("")
-    console.log(user)
+    const [currentEnemyType, setCurrentEnemyType] = useState("")
+    const [currentEnemyHealth, setCurrentEnemyHealth] = useState(0)
     // Post to backend to save character state
     const saveCharacterState = async () => {
         const response = await fetch(URL + "/character/" + user._id, {
@@ -33,6 +35,16 @@ function PlayPage(props){
     }
 
     function generateEnemy(){
+        if(currentExperience < 20) {
+            setCurrentEnemyType("slime")
+            setCurrentEnemyHealth(gameDetails.slime.health)
+        } else if(currentExperience < 30){
+            setCurrentEnemyType("werewolf")
+            setCurrentEnemyHealth(gameDetails.werewolf.health)
+        } else {
+            setCurrentEnemyType("dragon")
+            setCurrentEnemyHealth(gameDetails.dragon.health)
+        }
 
     }
     // Displays message on screen and stores item name and cost for possible purchase
@@ -64,8 +76,6 @@ function PlayPage(props){
         setPreviousScreen(currentScreen)
         setCurrentScreen("fight")
         setMessageToDisplay(`${user.name} currently has the ${user.weapon} and ${user.armor} equipped. A new creature has appeared.`)
-        setSelectedStoreItem("")
-        setSelectedItemPrice(0)
         setSelectedInventoryItemPrice(0)
         setSelectedInventoryItem("")
     }
@@ -150,7 +160,7 @@ function PlayPage(props){
             {selectedInventoryItemPrice === 0 ? <button onClick={handleItemUse} disabled>{previousScreen === "store" ? "Sell" : "Use" }</button> : <button onClick={handleItemUse}>{previousScreen === "store" ? "Sell" : "Use" }</button>}
         </div>,
         fight:
-        <div className="homeOptions">
+        <div className="attackOptions">
             <button>Attack</button>
             <button>Item Bag</button>
             <button onClick={previousScreen === "home" ? goToHome : ""}>Escape</button>
@@ -161,7 +171,7 @@ function PlayPage(props){
     function configureScreenLayout(){
         if(currentScreen === "home"){
             return <>
-                <HomeScreen name={user.name} classType={user.classType} health={user.health} experience={user.experience} gold={currentGold}/>
+                <HomeScreen name={user.name} classType={user.classType} health={user.health} experience={currentExperience} gold={currentGold}/>
                 <MessageBox borderStatus={"addBorder"} screenMessage={messageToDisplay}/>
                 <GameOptions borderStatus={"addBorder"} buttonOptions={menuOptions.home} />
             </>
