@@ -1,10 +1,6 @@
 import { Link, Form } from "react-router-dom"
 import { useState } from "react"
-import warriorIcon from "../assets/warrior.png"
-import wizardIcon from "../assets/wizard.png"
-import rogueIcon from "../assets/rogue.png"
-
-
+import { imageProvider } from "../utils/imageProvider"
 
 function CharacterCard(props) {
     const character = props.data
@@ -23,7 +19,7 @@ function CharacterCard(props) {
             <h1>{character.name}</h1>
             <button onClick={(e) => setModalClass("confirmDeletion")}>X</button>
         </div>
-        <img src={character.classType === "wizard" ? wizardIcon : character.classType === "warrior" ? warriorIcon : rogueIcon} alt="" />
+        <img src={imageProvider(character.classType)} alt="" />
         <div><Link to="/play" state={{user:character}} ><button>Play</button></Link></div>
         <div className="cardDetails">
             <p>Class:</p>

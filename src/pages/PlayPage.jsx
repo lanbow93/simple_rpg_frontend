@@ -194,7 +194,7 @@ function PlayPage(props){
         }
         if (currentScreen === "fight"){
             return<>
-                <FightScreen />
+                <FightScreen enemyType={currentEnemyType} enemyName={currentEnemyName} />
                 <MessageBox borderStatus="" screenMessage={messageToDisplay} />
                 <GameOptions borderStatus="" buttonOptions={menuOptions.fight} />
             </>

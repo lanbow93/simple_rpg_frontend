@@ -1,6 +1,5 @@
 import { gameDetails } from "../utils/gameDetails"
 
-
 import ShopItem from "./ShopItem"
 function Shelf(props){
     const targetObject = gameDetails[props.classType][props.category]

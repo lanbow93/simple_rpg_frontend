@@ -505,7 +505,7 @@
 /*_________Fight Screen_________*/
 
 .fightDisplay {
-
+  background-color: var(--text-color);
 }
 
 /*____________FINISH_____________*/

@@ -4,8 +4,6 @@ function RegistrationBox(props) {
     const [usernameEntry, setUsernameEntry] = useState("")
     const [passwordEntry, setPasswordEntry] = useState("")
 
-
-
     return <div className="registrationArea">
         <h1>Login/Sign-Up</h1>
         <div className="registrationForm">
