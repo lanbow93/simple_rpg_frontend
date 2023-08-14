@@ -1,11 +1,12 @@
+import CreatureCard from "./CreatureCard"
 function FightScreen(props){
     console.log(props)
     return <div className="fightDisplay">
         <div className="enemyArea">
-            <h1>Enemy Area</h1>
+            <CreatureCard />
         </div>
         <div className="userArea">
-            <h1>Friend Area</h1>
+            <CreatureCard />
         </div>
     </div>
 }

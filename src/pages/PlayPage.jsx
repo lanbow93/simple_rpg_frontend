@@ -77,7 +77,7 @@ function PlayPage(props){
         console.log({currentEnemyName}, {currentEnemyType}, {currentEnemyHealth})
         setPreviousScreen(currentScreen)
         setCurrentScreen("fight")
-        setMessageToDisplay(`${user.name} currently has the ${user.weapon} and ${user.armor} equipped. A new creature has appeared.`)
+        setMessageToDisplay(`${user.name} currently has the ${user.weapon} and ${user.armor} equipped. A ${currentEnemyType} named ${currentEnemyName} has appeared.`)
         setSelectedInventoryItemPrice(0)
         setSelectedInventoryItem("")
     }
@@ -194,7 +194,7 @@ function PlayPage(props){
         }
         if (currentScreen === "fight"){
             return<>
-                <FightScreen enemyType={currentEnemyType} enemyName={currentEnemyName} />
+                <FightScreen enemyType={currentEnemyType} enemyName={currentEnemyName} enemyHealth={currentEnemyHealth} userHealth={0} enemyBaseHealth={gameDetails[currentEnemyType]} userClass={user.classType} />
                 <MessageBox borderStatus="" screenMessage={messageToDisplay} />
                 <GameOptions borderStatus="" buttonOptions={menuOptions.fight} />
             </>

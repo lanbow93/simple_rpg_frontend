@@ -7,10 +7,8 @@ function CreatureCard(props){
         <div className="imageBlock">
         <img src={props.creatureImage} alt="" />
         </div>
-        
-        
-
-workcivil
 
     </div>
 }
+
+export default CreatureCard
