@@ -468,8 +468,6 @@
   width: 100%;
   height: 30rem;
   margin-bottom: 1rem;
-  
-
 }
 
 .statsInventoryScreen {
@@ -505,7 +503,26 @@
 /*_________Fight Screen_________*/
 
 .fightDisplay {
-  background-color: var(--text-color);
+  background: rgb(255,35,0);
+  background: linear-gradient(225deg, rgba(255,35,0,1) 6%, rgba(0,218,255,1) 100%);
+
+  color: var(--text-color);
+}
+
+.fightDisplay img {
+  max-width: 10rem;
+}
+
+.enemyArea{
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  margin-right: 1rem;
+  margin-top: 1rem;
+  
+}
+.userArea{
+  margin-left: 1rem;
 }
 
 /*____________FINISH_____________*/

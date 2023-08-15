@@ -24,6 +24,8 @@ function PlayPage(props){
     const [currentEnemyName, setCurrentEnemyName] = useState("")
     const [currentEnemyType, setCurrentEnemyType] = useState("")
     const [currentEnemyHealth, setCurrentEnemyHealth] = useState(0)
+    const [currentUserHealth , setCurrentUserHealth] = useState(user.health)
+
     // Post to backend to save character state
     const saveCharacterState = async () => {
         const response = await fetch(URL + "/character/" + user._id, {
@@ -194,7 +196,7 @@ function PlayPage(props){
         }
         if (currentScreen === "fight"){
             return<>
-                <FightScreen enemyType={currentEnemyType} enemyName={currentEnemyName} enemyHealth={currentEnemyHealth} userHealth={0} enemyBaseHealth={gameDetails[currentEnemyType]} userClass={user.classType} />
+                <FightScreen enemyType={currentEnemyType} enemyName={currentEnemyName} enemyHealth={currentEnemyHealth} enemyBaseHealth={gameDetails[currentEnemyType].stats.health} userName={user.name} userHealth={currentUserHealth} userBaseHealth={gameDetails[user.classType].stats.health} userClass={user.classType} />
                 <MessageBox borderStatus="" screenMessage={messageToDisplay} />
                 <GameOptions borderStatus="" buttonOptions={menuOptions.fight} />
             </>

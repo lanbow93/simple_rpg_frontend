@@ -1,14 +1,16 @@
+import { imageProvider } from "../utils/imageProvider"
 function CreatureCard(props){
-    return <div className="creatureCard">
-        <div className="healthBar">
-
+    return <>
+        <h2>{props.name}</h2>
+        <div className="healthField">
+        <p>{props.health}/{props.baseHealth}</p>
         </div>
         
         <div className="imageBlock">
-        <img src={props.creatureImage} alt="" />
+        <img src={imageProvider(props.classType)} alt="" />
         </div>
 
-    </div>
+    </>
 }
 
 export default CreatureCard
