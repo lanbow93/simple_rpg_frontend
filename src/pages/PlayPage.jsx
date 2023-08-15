@@ -47,8 +47,11 @@ function PlayPage(props){
             setCurrentEnemyType("dragon")
             setCurrentEnemyHealth(gameDetails.dragon.stats.health)
         }
+        
         // Setting random name
         setCurrentEnemyName(gameDetails.generic.names[Math.floor(Math.random()*gameDetails.generic.names.length)])
+
+        console.log({currentEnemyName})
     }
     // Displays message on screen and stores item name and cost for possible purchase
     function handleItemSelected(message, item, cost){
@@ -75,13 +78,16 @@ function PlayPage(props){
         setSelectedInventoryItem("")
     }
     function goToFight(){
-        generateEnemy()
-        console.log({currentEnemyName}, {currentEnemyType}, {currentEnemyHealth})
         setPreviousScreen(currentScreen)
         setCurrentScreen("fight")
-        setMessageToDisplay(`${user.name} currently has the ${user.weapon} and ${user.armor} equipped. A ${currentEnemyType} named ${currentEnemyName} has appeared.`)
+        generateEnemy()
+        
+        
+
         setSelectedInventoryItemPrice(0)
         setSelectedInventoryItem("")
+        setMessageToDisplay(`${user.name} currently has the ${user.weapon} and ${user.armor} equipped. A ${currentEnemyType} named ${currentEnemyName} has appeared.`)
+ 
     }
     function goToStore(){
         setPreviousScreen(currentScreen)

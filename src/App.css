@@ -503,8 +503,8 @@
 /*_________Fight Screen_________*/
 
 .fightDisplay {
-  background: rgb(255,35,0);
-  background: linear-gradient(225deg, rgba(255,35,0,1) 6%, rgba(0,218,255,1) 100%);
+  background: rgb(4,241,34);
+  background: linear-gradient(225deg, rgba(4,241,34,1) 2%, rgba(0,218,255,1) 62%);
 
   color: var(--text-color);
 }
@@ -519,10 +519,19 @@
   align-items: end;
   margin-right: 1rem;
   margin-top: 1rem;
-  
 }
+
 .userArea{
   margin-left: 1rem;
+}
+.healthField{
+  display: flex;
+  color: red;
+}
+.healthField p{
+  background-color: red;
+
+ 
 }
 
 /*____________FINISH_____________*/
