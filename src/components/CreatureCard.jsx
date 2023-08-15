@@ -7,7 +7,7 @@ function CreatureCard(props){
         </div>
         
         <div className="imageBlock">
-        <img src={imageProvider(props.classType)} alt="" />
+        <img src={imageProvider(props.classType)} alt={`Image of ${props.classType}`} />
         </div>
 
     </>
