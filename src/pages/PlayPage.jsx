@@ -77,16 +77,20 @@ function PlayPage(props){
         setSelectedInventoryItemPrice(0)
         setSelectedInventoryItem("")
     }
+    // Required due to if added to goToFight, will cause delayed component re-render
+    function handleFightMessage(){
+        setMessageToDisplay(`${user.name} currently has the ${user.weapon} and ${user.armor} equipped. A ${currentEnemyType} named ${currentEnemyName} has appeared.`)
+    }
+
     function goToFight(){
+
+        generateEnemy()
         setPreviousScreen(currentScreen)
         setCurrentScreen("fight")
-        generateEnemy()
-        
-        
-
         setSelectedInventoryItemPrice(0)
         setSelectedInventoryItem("")
-        setMessageToDisplay(`${user.name} currently has the ${user.weapon} and ${user.armor} equipped. A ${currentEnemyType} named ${currentEnemyName} has appeared.`)
+
+        
  
     }
     function goToStore(){
@@ -202,7 +206,7 @@ function PlayPage(props){
         }
         if (currentScreen === "fight"){
             return<>
-                <FightScreen enemyType={currentEnemyType} enemyName={currentEnemyName} enemyHealth={currentEnemyHealth} enemyBaseHealth={gameDetails[currentEnemyType].stats.health} userName={user.name} userHealth={currentUserHealth} userBaseHealth={gameDetails[user.classType].stats.health} userClass={user.classType} />
+                <FightScreen enemyType={currentEnemyType} enemyName={currentEnemyName} enemyHealth={currentEnemyHealth} enemyBaseHealth={gameDetails[currentEnemyType].stats.health} userName={user.name} userHealth={currentUserHealth} userBaseHealth={gameDetails[user.classType].stats.health} userClass={user.classType} weapon={user.weapon} armor={user.armor} fightMessage={handleFightMessage} />
                 <MessageBox borderStatus="" screenMessage={messageToDisplay} />
                 <GameOptions borderStatus="" buttonOptions={menuOptions.fight} />
             </>

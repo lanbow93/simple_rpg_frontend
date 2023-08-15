@@ -1,6 +1,6 @@
 import CreatureCard from "./CreatureCard"
 function FightScreen(props){
-    console.log(props)
+    props.fightMessage()
     return <div className="fightDisplay">
         <div className="enemyArea">
             <CreatureCard name={props.enemyName} health={props.enemyHealth} baseHealth={props.enemyBaseHealth} classType={props.enemyType} key={props.enemyName + props.enemyType} />
