@@ -78,20 +78,25 @@ function PlayPage(props){
         setSelectedInventoryItem("")
     }
     // Required due to if added to goToFight, will cause delayed component re-render
-    function handleFightMessage(){
-        setMessageToDisplay(`${user.name} currently has the ${user.weapon} and ${user.armor} equipped. A ${currentEnemyType} named ${currentEnemyName} has appeared.`)
+    function handleFightMessage(message = ""){
+        if(message){
+            setMessageToDisplay(message)
+        } else {
+            setMessageToDisplay(`${user.name} currently has the ${user.weapon} and ${user.armor} equipped. A ${currentEnemyType} named ${currentEnemyName} has appeared.`)
+        }
     }
 
     function goToFight(){
-
         generateEnemy()
+        setPreviousScreen(currentScreen)
+        setCurrentScreen("fight")
+    }
+
+    function goToFightFromInventory(){
         setPreviousScreen(currentScreen)
         setCurrentScreen("fight")
         setSelectedInventoryItemPrice(0)
         setSelectedInventoryItem("")
-
-        
- 
     }
     function goToStore(){
         setPreviousScreen(currentScreen)
@@ -117,6 +122,7 @@ function PlayPage(props){
         }
     }
     async function handleItemUse(){
+        let usedItem = false
         // Case if inventory item to use is a weapon
         if (gameDetails[user.classType].weapons[selectedInventoryItem]){
             if(user.weapon === selectedInventoryItem){
@@ -125,6 +131,7 @@ function PlayPage(props){
             else{
                 user.weapon = selectedInventoryItem
                 setMessageToDisplay(`You have equipped the ${user.weapon}`)
+                usedItem = true
             }
         }
         // Case if inventory item to use is armor
@@ -135,6 +142,7 @@ function PlayPage(props){
             else{
                 user.armor = selectedInventoryItem
                 setMessageToDisplay(`You have equipped the ${user.armor}`)
+                usedItem = true
             }
         }
         // Case if using a item to heal and remove from inventory    
@@ -145,13 +153,22 @@ function PlayPage(props){
             } 
             else if (user.health + gameDetails.generic.items[selectedInventoryItem].heal >= 20 ){
                 user.health = 20
-                setMessageToDisplay(`You have fully healed to ${user.health}/20`)
+                setCurrentUserHealth(20)
+                setMessageToDisplay(`You have fully healed to ${currentUserHealth}/20`)
                 user.inventory.splice(itemIndex,1)
+                usedItem = true
             } else {
                 user.health += gameDetails.generic.items[selectedInventoryItem].heal
-                setMessageToDisplay(`You have healed to ${user.health}/20`)
-                user.inventory.splice(itemIndex,1)                
+                setCurrentUserHealth(currentUserHealth + gameDetails.generic.items[selectedInventoryItem].heal)
+                setMessageToDisplay(`You have healed to ${currentUserHealth}/20`)
+                user.inventory.splice(itemIndex,1)
+                usedItem = true                
             }
+        }
+        if (previousScreen === "fight" && usedItem) {
+            setSelectedInventoryItem("")
+            setSelectedInventoryItemPrice(0)
+            setCurrentScreen("fight")
         }
         saveCharacterState()
     }
@@ -170,13 +187,13 @@ function PlayPage(props){
         </div>,
         inventory:
         <div className="inventoryOptions">
-            <button onClick={previousScreen === "home" ? goToHome : previousScreen === "fight" ? goToFight : ""}>Back</button>
+            <button onClick={previousScreen === "home" ? goToHome : previousScreen === "fight" ? goToFightFromInventory : goToStore}>Back</button>
             {selectedInventoryItemPrice === 0 ? <button onClick={handleItemUse} disabled>{previousScreen === "store" ? "Sell" : "Use" }</button> : <button onClick={handleItemUse}>{previousScreen === "store" ? "Sell" : "Use" }</button>}
         </div>,
         fight:
         <div className="attackOptions">
             <button>Attack</button>
-            <button>Item Bag</button>
+            <button onClick={goToInventory} >Item Bag</button>
             <button onClick={goToHome}>Escape</button>
             
         </div>
