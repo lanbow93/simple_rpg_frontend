@@ -511,7 +511,7 @@
   background: rgb(4,241,34);
   background: linear-gradient(225deg, rgba(4,241,34,1) 2%, rgba(0,218,255,1) 62%);
 
-  color: var(--text-color);
+  color: black;
   margin-top: 1rem;
 }
 
@@ -532,12 +532,30 @@
 }
 .healthField{
   display: flex;
-  color: red;
+  
 }
-.healthField p{
-  background-color: red;
 
- 
+.healthField p{
+  color: #00000000;
+  border-top: solid black 2px;
+  border-bottom: solid black 2px;
+}
+.healthField p:first-child {
+  border-left: solid black 2px;
+}
+.healthField p:last-child {
+  border-right: solid black 2px;
+}
+.greenHealth{
+  background-color: rgb(0, 255, 0);
+}
+
+.yellowHealth{
+  background-color: yellow;
+}
+
+.redHealth{
+  background-color: red;
 }
 
 /*____________FINISH_____________*/
@@ -635,7 +653,8 @@
     max-width: 12rem;
   }
 
-  
+
+
   
 
 }
