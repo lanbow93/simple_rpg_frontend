@@ -342,7 +342,7 @@
 
 .messageArea{
   text-align: center;
-  height: 8rem;
+  height: 10rem;
   background-color: #7e5e00;
   color: white;
   display: flex;
@@ -384,6 +384,11 @@
 /*____________FINISH_____________*/
 
 /*_________Store Screen_________*/
+
+.playArea:has(.storeDisplay){
+  padding-top: 0;
+}
+
 .storeDisplay{
   width: 22rem;
   text-align: center;
@@ -507,6 +512,7 @@
   background: linear-gradient(225deg, rgba(4,241,34,1) 2%, rgba(0,218,255,1) 62%);
 
   color: var(--text-color);
+  margin-top: 1rem;
 }
 
 .fightDisplay img {
@@ -624,6 +630,14 @@
   .inventoryItems::-webkit-scrollbar-track-piece {
     height: 2rem;
   }
+
+  .fightDisplay img {
+    max-width: 12rem;
+  }
+
+  
+  
+
 }
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 /*  Laptops and small monitors */
