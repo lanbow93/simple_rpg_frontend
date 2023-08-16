@@ -207,8 +207,8 @@ function PlayPage(props){
         if (currentScreen === "fight"){
             return<>
                 <FightScreen enemyType={currentEnemyType} enemyName={currentEnemyName} enemyHealth={currentEnemyHealth} enemyBaseHealth={gameDetails[currentEnemyType].stats.health} userName={user.name} userHealth={currentUserHealth} userBaseHealth={gameDetails[user.classType].stats.health} userClass={user.classType} weapon={user.weapon} armor={user.armor} fightMessage={handleFightMessage} />
-                <MessageBox borderStatus="" screenMessage={messageToDisplay} />
-                <GameOptions borderStatus="" buttonOptions={menuOptions.fight} />
+                <MessageBox borderStatus="addBorder" screenMessage={messageToDisplay} />
+                <GameOptions borderStatus="addBorder" buttonOptions={menuOptions.fight} />
             </>
         }
     }

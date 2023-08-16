@@ -10,6 +10,7 @@
   border: 0;
   font-family: var(--text-font);
 }
+
 :root{
   background-image: url("./assets/background.jpg");
   background-position: center;
@@ -481,7 +482,6 @@
 
 .itemArea {
   display: grid;
-  
   height: 14.5rem;
 }
 .inventoryItems{

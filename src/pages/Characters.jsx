@@ -4,6 +4,7 @@ import Error from "./Error"
 
 function Characters(props) {
     const character_list = useLoaderData()
+    console.log(character_list)
     if (character_list.error){
         return <Error errorMessage="You are not currently logged in" toLink="/" />
     }
