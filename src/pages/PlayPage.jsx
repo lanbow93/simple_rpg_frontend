@@ -92,9 +92,10 @@ function PlayPage(props){
         setCurrentScreen("fight")
     }
 
-    function goToFightFromInventory(){
+    function goToFightFromInventory(wasItemUsed=false, message){
         setPreviousScreen(currentScreen)
         setCurrentScreen("fight")
+        handleFightMessage(message)
         setSelectedInventoryItemPrice(0)
         setSelectedInventoryItem("")
     }
@@ -123,6 +124,7 @@ function PlayPage(props){
     }
     async function handleItemUse(){
         let usedItem = false
+        let messageToUse = ""
         // Case if inventory item to use is a weapon
         if (gameDetails[user.classType].weapons[selectedInventoryItem]){
             if(user.weapon === selectedInventoryItem){
@@ -131,6 +133,7 @@ function PlayPage(props){
             else{
                 user.weapon = selectedInventoryItem
                 setMessageToDisplay(`You have equipped the ${user.weapon}`)
+                messageToUse=`You have equipped the ${user.weapon}`
                 usedItem = true
             }
         }
@@ -142,6 +145,7 @@ function PlayPage(props){
             else{
                 user.armor = selectedInventoryItem
                 setMessageToDisplay(`You have equipped the ${user.armor}`)
+                messageToUse=`You have equipped the ${user.armor}`
                 usedItem = true
             }
         }
@@ -155,20 +159,21 @@ function PlayPage(props){
                 user.health = 20
                 setCurrentUserHealth(20)
                 setMessageToDisplay(`You have fully healed to ${currentUserHealth}/20`)
+                messageToUse=`You have fully healed to ${currentUserHealth}/20`
                 user.inventory.splice(itemIndex,1)
                 usedItem = true
             } else {
                 user.health += gameDetails.generic.items[selectedInventoryItem].heal
                 setCurrentUserHealth(currentUserHealth + gameDetails.generic.items[selectedInventoryItem].heal)
                 setMessageToDisplay(`You have healed to ${currentUserHealth}/20`)
+                messageToUse=`You have healed to ${currentUserHealth}/20`
                 user.inventory.splice(itemIndex,1)
                 usedItem = true                
             }
         }
         if (previousScreen === "fight" && usedItem) {
-            setSelectedInventoryItem("")
-            setSelectedInventoryItemPrice(0)
-            setCurrentScreen("fight")
+            goToFightFromInventory(true, messageToUse)
+            
         }
         saveCharacterState()
     }
@@ -187,8 +192,8 @@ function PlayPage(props){
         </div>,
         inventory:
         <div className="inventoryOptions">
-            <button onClick={previousScreen === "home" ? goToHome : previousScreen === "fight" ? goToFightFromInventory : goToStore}>Back</button>
-            {selectedInventoryItemPrice === 0 ? <button onClick={handleItemUse} disabled>{previousScreen === "store" ? "Sell" : "Use" }</button> : <button onClick={handleItemUse}>{previousScreen === "store" ? "Sell" : "Use" }</button>}
+            <button onClick={previousScreen === "home" ? goToHome : previousScreen === "fight" ? () => goToFightFromInventory(false, "") : goToStore}>Back</button>
+            {selectedInventoryItemPrice === 0 ? <button onClick={handleItemUse} disabled>{previousScreen === "storeIdk" ? "Sell" : "Use" }</button> : <button onClick={handleItemUse}>{previousScreen === "store" ? "Sell" : "Use" }</button>}
         </div>,
         fight:
         <div className="attackOptions">

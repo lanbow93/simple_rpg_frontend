@@ -23,13 +23,10 @@ function determineHealthBar(baseHealth, currentHealth){
             }
         }
     }
-   
     return healthBar
 }
 function CreatureCard(props){
-
-
-    return <>
+    return <div className={props.divClass}>
         <h2>{props.name}</h2>
         <div className="healthField">
         {determineHealthBar(props.baseHealth, props.health)}
@@ -39,7 +36,7 @@ function CreatureCard(props){
         <img src={imageProvider(props.classType)} alt={`Image of ${props.classType}`} />
         </div>
 
-    </>
+    </div>
 }
 
 export default CreatureCard
