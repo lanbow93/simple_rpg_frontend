@@ -26,6 +26,7 @@ function PlayPage(props){
     const [currentEnemyHealth, setCurrentEnemyHealth] = useState(0)
     const [currentUserHealth , setCurrentUserHealth] = useState(user.health)
     const [messageToPass, setMessageToPass] = useState("")
+    let fightTurn = "user"
 
     // Post to backend to save character state
     const saveCharacterState = async () => {
@@ -74,6 +75,7 @@ function PlayPage(props){
         setSelectedItemPrice(0)
         setSelectedInventoryItemPrice(0)
         setSelectedInventoryItem("")
+        setMessageToPass("")
     }
     // Required due to if added to goToFight, will cause delayed component re-render
     function handleFightMessage(){
@@ -107,19 +109,19 @@ function PlayPage(props){
         setMessageToDisplay("Browsing Inventory")
     }
     // Function to purchase on parent to trigger change in child components
-    async function handlePurchase(){
+    function handlePurchase(){
         // Verifying that character has enough money
         if(selectedItemPrice > 0 && currentGold >= selectedItemPrice) {
             setCurrentGold(currentGold - selectedItemPrice)
             user.gold -= selectedItemPrice
             user.inventory.push(selectedStoreItem)
-            await saveCharacterState()
+            saveCharacterState()
             setMessageToDisplay(`You have purchased the ${selectedStoreItem}.\nRemaining Gold: ${user.gold}`)
         } else {
             setMessageToDisplay(`You do not have enough gold to purchase the ${selectedStoreItem}`)
         }
     }
-    async function handleItemUse(){
+    function handleItemUse(){
         let usedItem = false
         // Case if inventory item to use is a weapon
         if (gameDetails[user.classType].weapons[selectedInventoryItem]){
@@ -154,15 +156,15 @@ function PlayPage(props){
             else if (user.health + gameDetails.generic.items[selectedInventoryItem].heal >= 20 ){
                 user.health = 20
                 setCurrentUserHealth(20)
-                setMessageToDisplay(`You have fully healed to ${currentUserHealth}/20`)
-                setMessageToPass(`You have fully healed to ${currentUserHealth}/20`)
+                setMessageToDisplay(`You have fully healed to ${user.health}/20`)
+                setMessageToPass(`You have fully healed to ${user.health}/20`)
                 user.inventory.splice(itemIndex,1)
                 usedItem = true
             } else {
                 user.health += gameDetails.generic.items[selectedInventoryItem].heal
                 setCurrentUserHealth(currentUserHealth + gameDetails.generic.items[selectedInventoryItem].heal)
-                setMessageToDisplay(`You have healed to ${currentUserHealth}/20`)
-                setMessageToPass(`You have healed to ${currentUserHealth}/20`)
+                setMessageToDisplay(`You have healed to ${user.health}/20`)
+                setMessageToPass(`You have healed to ${user.health}/20`)
                 user.inventory.splice(itemIndex,1)
                 usedItem = true                
             }
