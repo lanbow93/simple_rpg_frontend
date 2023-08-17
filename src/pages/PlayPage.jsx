@@ -174,6 +174,21 @@ function PlayPage(props){
             goToFightFromInventory(true)
         }
     }
+
+    function handleAttackAction(){
+                const userAttack = gameDetails[user.classType].weapons[user.weapon].damage
+        const userDefense = gameDetails[user.classType].armors[user.armor].defense
+        const userHealth = user.health
+        const enemyAttack = gameDetails[currentEnemyType].stats.attack
+        const enemyDefense = gameDetails[currentEnemyType].stats.defense
+        const enemyHealth = currentEnemyHealth
+
+        console.log({enemyHealth})
+        console.log({enemyDefense})
+        console.log({userAttack})
+        setMessageToPass("The Health Afterwards "+ (enemyHealth + enemyDefense - userAttack ))
+        // setCurrentEnemyHealth(currentEnemyHealth + gameDetails[enemyType].stats.defense - gameDetails[user.classType].weapons.broadsword.damage)
+    }
     // Way to determine what buttons are put on the screen
     const menuOptions = {
         home:
@@ -194,7 +209,7 @@ function PlayPage(props){
         </div>,
         fight:
         <div className="attackOptions">
-            <button onClick={() => console.log("Attack clicked")}>Attack</button>
+            <button onClick={handleAttackAction}>Attack</button>
             <button onClick={goToInventory} >Item Bag</button>
             <button onClick={goToHome}>Escape</button>
             
