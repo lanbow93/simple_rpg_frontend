@@ -25,6 +25,7 @@ function PlayPage(props){
     const [currentEnemyType, setCurrentEnemyType] = useState("")
     const [currentEnemyHealth, setCurrentEnemyHealth] = useState(0)
     const [currentUserHealth , setCurrentUserHealth] = useState(user.health)
+    const [messageToPass, setMessageToPass] = useState("")
 
     // Post to backend to save character state
     const saveCharacterState = async () => {
@@ -47,11 +48,8 @@ function PlayPage(props){
             setCurrentEnemyType("dragon")
             setCurrentEnemyHealth(gameDetails.dragon.stats.health)
         }
-        
         // Setting random name
         setCurrentEnemyName(gameDetails.generic.names[Math.floor(Math.random()*gameDetails.generic.names.length)])
-
-        console.log({currentEnemyName})
     }
     // Displays message on screen and stores item name and cost for possible purchase
     function handleItemSelected(message, item, cost){
@@ -78,9 +76,9 @@ function PlayPage(props){
         setSelectedInventoryItem("")
     }
     // Required due to if added to goToFight, will cause delayed component re-render
-    function handleFightMessage(message = ""){
-        if(message){
-            setMessageToDisplay(message)
+    function handleFightMessage(){
+        if(messageToPass){
+            setMessageToDisplay(messageToPass)
         } else {
             setMessageToDisplay(`${user.name} currently has the ${user.weapon} and ${user.armor} equipped. A ${currentEnemyType} named ${currentEnemyName} has appeared.`)
         }
@@ -92,10 +90,9 @@ function PlayPage(props){
         setCurrentScreen("fight")
     }
 
-    function goToFightFromInventory(wasItemUsed=false, message){
+    function goToFightFromInventory(wasItemUsed=false){
         setPreviousScreen(currentScreen)
         setCurrentScreen("fight")
-        handleFightMessage(message)
         setSelectedInventoryItemPrice(0)
         setSelectedInventoryItem("")
     }
@@ -124,7 +121,6 @@ function PlayPage(props){
     }
     async function handleItemUse(){
         let usedItem = false
-        let messageToUse = ""
         // Case if inventory item to use is a weapon
         if (gameDetails[user.classType].weapons[selectedInventoryItem]){
             if(user.weapon === selectedInventoryItem){
@@ -133,7 +129,7 @@ function PlayPage(props){
             else{
                 user.weapon = selectedInventoryItem
                 setMessageToDisplay(`You have equipped the ${user.weapon}`)
-                messageToUse=`You have equipped the ${user.weapon}`
+                setMessageToPass(`You have equipped the ${user.weapon}`)
                 usedItem = true
             }
         }
@@ -145,7 +141,7 @@ function PlayPage(props){
             else{
                 user.armor = selectedInventoryItem
                 setMessageToDisplay(`You have equipped the ${user.armor}`)
-                messageToUse=`You have equipped the ${user.armor}`
+                setMessageToPass(`You have equipped the ${user.armor}`)
                 usedItem = true
             }
         }
@@ -159,23 +155,22 @@ function PlayPage(props){
                 user.health = 20
                 setCurrentUserHealth(20)
                 setMessageToDisplay(`You have fully healed to ${currentUserHealth}/20`)
-                messageToUse=`You have fully healed to ${currentUserHealth}/20`
+                setMessageToPass(`You have fully healed to ${currentUserHealth}/20`)
                 user.inventory.splice(itemIndex,1)
                 usedItem = true
             } else {
                 user.health += gameDetails.generic.items[selectedInventoryItem].heal
                 setCurrentUserHealth(currentUserHealth + gameDetails.generic.items[selectedInventoryItem].heal)
                 setMessageToDisplay(`You have healed to ${currentUserHealth}/20`)
-                messageToUse=`You have healed to ${currentUserHealth}/20`
+                setMessageToPass(`You have healed to ${currentUserHealth}/20`)
                 user.inventory.splice(itemIndex,1)
                 usedItem = true                
             }
         }
-        if (previousScreen === "fight" && usedItem) {
-            goToFightFromInventory(true, messageToUse)
-            
-        }
         saveCharacterState()
+        if (previousScreen === "fight" && usedItem) {
+            goToFightFromInventory(true)
+        }
     }
     // Way to determine what buttons are put on the screen
     const menuOptions = {
@@ -187,17 +182,17 @@ function PlayPage(props){
         </div>,
         store:
         <div className="storeOptions">
-            <button onClick={previousScreen === "home" ? goToHome : ""}>Back</button>
-            {selectedItemPrice === 0 ? <button onClick={""} disabled>Purchase</button> : <button onClick={handlePurchase}>Purchase</button>}
+            <button onClick={goToHome}>Back</button>
+            {selectedItemPrice === 0 ? <button onClick={() => alert("Not Able To Purchase")} disabled>Purchase</button> : <button onClick={handlePurchase}>Purchase</button>}
         </div>,
         inventory:
         <div className="inventoryOptions">
             <button onClick={previousScreen === "home" ? goToHome : previousScreen === "fight" ? () => goToFightFromInventory(false, "") : goToStore}>Back</button>
-            {selectedInventoryItemPrice === 0 ? <button onClick={handleItemUse} disabled>{previousScreen === "storeIdk" ? "Sell" : "Use" }</button> : <button onClick={handleItemUse}>{previousScreen === "store" ? "Sell" : "Use" }</button>}
+            {selectedInventoryItemPrice === 0 ? <button onClick={handleItemUse} disabled>{previousScreen === "store" ? "Sell" : "Use" }</button> : <button onClick={handleItemUse}>{previousScreen === "store" ? "Sell" : "Use" }</button>}
         </div>,
         fight:
         <div className="attackOptions">
-            <button>Attack</button>
+            <button onClick={() => console.log("Attack clicked")}>Attack</button>
             <button onClick={goToInventory} >Item Bag</button>
             <button onClick={goToHome}>Escape</button>
             
@@ -215,8 +210,8 @@ function PlayPage(props){
         if(currentScreen === "store"){
             return <>
                 <Store classType={user.classType} handleItemSelected={handleItemSelected} />
-                <MessageBox borderStatus="" screenMessage={messageToDisplay} />
-                <GameOptions borderStatus="" buttonOptions={menuOptions.store} />
+                <MessageBox borderStatus="noBorder" screenMessage={messageToDisplay} />
+                <GameOptions borderStatus="noBorder" buttonOptions={menuOptions.store} />
             </>
         }
         if (currentScreen === "inventory"){
