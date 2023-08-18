@@ -179,13 +179,19 @@ function PlayPage(props){
         const userDefense = gameDetails[user.classType].armors[user.armor].defense
         const userHealth = user.health
         const enemyAttack = gameDetails[currentEnemyType].stats.attack
-        setMessageToPass("Enemy has attacked")
+        
+        if (userDefense >= enemyAttack) {
+            setMessageToPass(`${currentEnemyName} attacked your ${user.armor} but did no damage.`)
+        } else {
+            user.health -= enemyAttack - userDefense
+            setCurrentUserHealth(user.health)
+            setMessageToPass(`${currentEnemyName} attacked your ${user.armor} and did ${ enemyAttack - userDefense} damage `)
+        }
 
     }
     function handleUserAttackAction(){
         const userAttack = gameDetails[user.classType].weapons[user.weapon].damage
         const enemyDefense = gameDetails[currentEnemyType].stats.defense
-        const enemyHealth = currentEnemyHealth
 
         if (enemyDefense >= userAttack ){
             setAttackButtonsStatus("disabled")
@@ -195,6 +201,7 @@ function PlayPage(props){
         } else {
             setCurrentEnemyHealth(currentEnemyHealth - (userAttack - enemyDefense))
             setMessageToPass(`${user.name} attacked with their ${user.weapon} and did ${(userAttack - enemyDefense)} damage`)
+            setTimeout(handleEnemyAttackAction, 4000)
         }
 
         
