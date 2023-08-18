@@ -26,7 +26,7 @@ function PlayPage(props){
     const [currentEnemyHealth, setCurrentEnemyHealth] = useState(0)
     const [currentUserHealth , setCurrentUserHealth] = useState(user.health)
     const [messageToPass, setMessageToPass] = useState("")
-    let fightTurn = "user"
+    const [attackButtonsStatus, setAttackButtonsStatus] = useState("")
 
     // Post to backend to save character state
     const saveCharacterState = async () => {
@@ -86,12 +86,12 @@ function PlayPage(props){
         }
     }
 
+
     function goToFight(){
         generateEnemy()
         setPreviousScreen(currentScreen)
         setCurrentScreen("fight")
     }
-
     function goToFightFromInventory(wasItemUsed=false){
         setPreviousScreen(currentScreen)
         setCurrentScreen("fight")
@@ -175,18 +175,29 @@ function PlayPage(props){
         }
     }
 
-    function handleAttackAction(){
-                const userAttack = gameDetails[user.classType].weapons[user.weapon].damage
+    function handleEnemyAttackAction(){
         const userDefense = gameDetails[user.classType].armors[user.armor].defense
         const userHealth = user.health
         const enemyAttack = gameDetails[currentEnemyType].stats.attack
+        setMessageToPass("Enemy has attacked")
+
+    }
+    function handleUserAttackAction(){
+        const userAttack = gameDetails[user.classType].weapons[user.weapon].damage
         const enemyDefense = gameDetails[currentEnemyType].stats.defense
         const enemyHealth = currentEnemyHealth
 
-        console.log({enemyHealth})
-        console.log({enemyDefense})
-        console.log({userAttack})
-        setMessageToPass("The Health Afterwards "+ (enemyHealth + enemyDefense - userAttack ))
+        if (enemyDefense >= userAttack ){
+            setAttackButtonsStatus("disabled")
+            setMessageToPass("Your attack did nothing. Try a stronger weapon.")
+            setTimeout(handleEnemyAttackAction, 4000)
+
+        } else {
+            setCurrentEnemyHealth(currentEnemyHealth - (userAttack - enemyDefense))
+            setMessageToPass(`${user.name} attacked with their ${user.weapon} and did ${(userAttack - enemyDefense)} damage`)
+        }
+
+        
         // setCurrentEnemyHealth(currentEnemyHealth + gameDetails[enemyType].stats.defense - gameDetails[user.classType].weapons.broadsword.damage)
     }
     // Way to determine what buttons are put on the screen
@@ -209,7 +220,7 @@ function PlayPage(props){
         </div>,
         fight:
         <div className="attackOptions">
-            <button onClick={handleAttackAction}>Attack</button>
+            <button onClick={handleUserAttackAction}>Attack</button>
             <button onClick={goToInventory} >Item Bag</button>
             <button onClick={goToHome}>Escape</button>
             
