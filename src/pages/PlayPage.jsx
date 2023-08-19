@@ -94,11 +94,12 @@ function PlayPage(props){
     }
     function goToFightFromInventory(hasUsedItem){
         setPreviousScreen(currentScreen)
+        
         setCurrentScreen("fight")
         setSelectedInventoryItemPrice(0)
         setSelectedInventoryItem("")
-        console.log("Fight from inventory reached")
         if(hasUsedItem){
+            setAttackButtonsStatus("disabled")
             setTimeout(handleEnemyAttackAction, 3000)
         }
     }
@@ -191,6 +192,7 @@ function PlayPage(props){
             setMessageToPass(`${currentEnemyName} attacked your ${user.armor} and did ${ enemyAttack - userDefense} damage `)
         }
         saveCharacterState()
+        setAttackButtonsStatus("")
 
     }
     function handleUserAttackAction(){
@@ -203,6 +205,7 @@ function PlayPage(props){
             setTimeout(handleEnemyAttackAction, 3000)
 
         } else {
+            setAttackButtonsStatus("disabled")
             setCurrentEnemyHealth(currentEnemyHealth - (userAttack - enemyDefense))
             setMessageToPass(`${user.name} attacked with their ${user.weapon} and did ${(userAttack - enemyDefense)} damage`)
             setTimeout(handleEnemyAttackAction, 3000)
@@ -231,10 +234,9 @@ function PlayPage(props){
         </div>,
         fight:
         <div className="attackOptions">
-            <button onClick={handleUserAttackAction}>Attack</button>
-            <button onClick={goToInventory} >Item Bag</button>
-            <button onClick={goToHome}>Escape</button>
-            
+            {attackButtonsStatus === "disabled" ? <button onClick={handleUserAttackAction} disabled>Attack</button> : <button onClick={handleUserAttackAction}>Attack</button>}
+            {attackButtonsStatus === "disabled" ? <button onClick={goToInventory} disabled>Item Bag</button> : <button onClick={goToInventory} >Item Bag</button>}
+            {attackButtonsStatus === "disabled" ? <button onClick={goToHome} disabled>Escape</button> :<button onClick={goToHome}>Escape</button>}  
         </div>
     }
     // Used to determine what is displayed on the screen
