@@ -39,6 +39,8 @@ function PlayPage(props){
     }
     // Selecting enemy based on experience, assigning random name
     function generateEnemy(){
+        setMessageToPass("")
+        setAttackButtonsStatus("")
         if(currentExperience < 30) {
             setCurrentEnemyType("slime")
             setCurrentEnemyHealth(gameDetails.slime.stats.health)
@@ -213,7 +215,7 @@ function PlayPage(props){
             } else {
                 setCurrentEnemyHealth(0)
                 setMessageToPass(`You have defeated ${currentEnemyName}. You have earned ${gameDetails[currentEnemyType].inventory.gold} gold and ${gameDetails[currentEnemyType].stats.experience} experience. `)
-                
+                setTimeout(goToFight, 3000)
 
             }
         }
