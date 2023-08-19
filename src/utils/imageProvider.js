@@ -14,6 +14,7 @@ import maceIcon from "../assets/maceIcon.png"
 import weakHealthPotionIcon from "../assets/weakHealthPotionIcon.png"
 import healthPotionIcon from "../assets/healthPotionIcon.png"
 import strongHealthPotionIcon from "../assets/strongHealthPotionIcon.png"
+import skullIcon from "../assets/crossbones.png"
 
 export function imageProvider(item){
     switch(item){
@@ -92,6 +93,9 @@ export function imageProvider(item){
             return healthPotionIcon
         case "strong potion":
             return strongHealthPotionIcon
+        // Gameover
+        case "skull":
+            return skullIcon
         default:
             break
     }

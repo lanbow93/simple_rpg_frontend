@@ -206,9 +206,16 @@ function PlayPage(props){
 
         } else {
             setAttackButtonsStatus("disabled")
-            setCurrentEnemyHealth(currentEnemyHealth - (userAttack - enemyDefense))
-            setMessageToPass(`${user.name} attacked with their ${user.weapon} and did ${(userAttack - enemyDefense)} damage`)
-            setTimeout(handleEnemyAttackAction, 3000)
+            if ((currentEnemyHealth - (userAttack - enemyDefense)) > 0) {
+                setCurrentEnemyHealth(currentEnemyHealth - (userAttack - enemyDefense))
+                setMessageToPass(`${user.name} attacked with their ${user.weapon} and did ${(userAttack - enemyDefense)} damage`)
+                setTimeout(handleEnemyAttackAction, 3000)
+            } else {
+                setCurrentEnemyHealth(0)
+                setMessageToPass(`You have defeated ${currentEnemyName}. You have earned ${gameDetails[currentEnemyType].inventory.gold} gold and ${gameDetails[currentEnemyType].stats.experience} experience. `)
+                
+
+            }
         }
 
         

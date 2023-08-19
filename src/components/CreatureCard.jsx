@@ -33,7 +33,7 @@ function CreatureCard(props){
         </div>
         <p>{props.health}/{props.baseHealth}</p>
         <div className="imageBlock">
-        <img src={imageProvider(props.classType)} alt={`Image of ${props.classType}`} />
+        <img src={props.health > 0 ? imageProvider(props.classType) : imageProvider("skull")} alt={`Image of ${props.classType}`} />
         </div>
 
     </div>
