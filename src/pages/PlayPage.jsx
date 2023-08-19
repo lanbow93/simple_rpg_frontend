@@ -92,11 +92,15 @@ function PlayPage(props){
         setPreviousScreen(currentScreen)
         setCurrentScreen("fight")
     }
-    function goToFightFromInventory(wasItemUsed=false){
+    function goToFightFromInventory(hasUsedItem){
         setPreviousScreen(currentScreen)
         setCurrentScreen("fight")
         setSelectedInventoryItemPrice(0)
         setSelectedInventoryItem("")
+        console.log("Fight from inventory reached")
+        if(hasUsedItem){
+            setTimeout(handleEnemyAttackAction, 3000)
+        }
     }
     function goToStore(){
         setPreviousScreen(currentScreen)
@@ -177,7 +181,6 @@ function PlayPage(props){
 
     function handleEnemyAttackAction(){
         const userDefense = gameDetails[user.classType].armors[user.armor].defense
-        const userHealth = user.health
         const enemyAttack = gameDetails[currentEnemyType].stats.attack
         
         if (userDefense >= enemyAttack) {
@@ -187,6 +190,7 @@ function PlayPage(props){
             setCurrentUserHealth(user.health)
             setMessageToPass(`${currentEnemyName} attacked your ${user.armor} and did ${ enemyAttack - userDefense} damage `)
         }
+        saveCharacterState()
 
     }
     function handleUserAttackAction(){
@@ -196,12 +200,12 @@ function PlayPage(props){
         if (enemyDefense >= userAttack ){
             setAttackButtonsStatus("disabled")
             setMessageToPass("Your attack did nothing. Try a stronger weapon.")
-            setTimeout(handleEnemyAttackAction, 4000)
+            setTimeout(handleEnemyAttackAction, 3000)
 
         } else {
             setCurrentEnemyHealth(currentEnemyHealth - (userAttack - enemyDefense))
             setMessageToPass(`${user.name} attacked with their ${user.weapon} and did ${(userAttack - enemyDefense)} damage`)
-            setTimeout(handleEnemyAttackAction, 4000)
+            setTimeout(handleEnemyAttackAction, 3000)
         }
 
         
@@ -222,7 +226,7 @@ function PlayPage(props){
         </div>,
         inventory:
         <div className="inventoryOptions">
-            <button onClick={previousScreen === "home" ? goToHome : previousScreen === "fight" ? () => goToFightFromInventory(false, "") : goToStore}>Back</button>
+            <button onClick={previousScreen === "home" ? goToHome : previousScreen === "fight" ? () => goToFightFromInventory(false) : goToStore}>Back</button>
             {selectedInventoryItemPrice === 0 ? <button onClick={handleItemUse} disabled>{previousScreen === "store" ? "Sell" : "Use" }</button> : <button onClick={handleItemUse}>{previousScreen === "store" ? "Sell" : "Use" }</button>}
         </div>,
         fight:
