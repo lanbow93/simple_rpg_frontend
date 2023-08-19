@@ -184,7 +184,7 @@ function PlayPage(props){
 
     function handleEnemyAttackAction(){
         const userDefense = gameDetails[user.classType].armors[user.armor].defense
-        const enemyAttack = gameDetails[currentEnemyType].stats.attack
+        const enemyAttack = gameDetails[currentEnemyType].stats.attack + 2
         
         if (userDefense >= enemyAttack) {
             setMessageToPass(`${currentEnemyName} attacked your ${user.armor} but did no damage.`)
@@ -215,8 +215,12 @@ function PlayPage(props){
             } else {
                 setCurrentEnemyHealth(0)
                 setMessageToPass(`You have defeated ${currentEnemyName}. You have earned ${gameDetails[currentEnemyType].inventory.gold} gold and ${gameDetails[currentEnemyType].stats.experience} experience. `)
+                user.experience += gameDetails[currentEnemyType].stats.experience
+                user.gold += gameDetails[currentEnemyType].inventory.gold
+                setCurrentGold(user.gold)
+                setCurrentExperience(user.experience)
+                saveCharacterState()
                 setTimeout(goToFight, 3000)
-
             }
         }
 
