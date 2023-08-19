@@ -2,7 +2,7 @@ export const gameDetails = {
     wizard: {
         weapons: {
             wand: {
-                damage: 2,
+                damage: 3,
                 cost: 5,
             },
             staff: {
@@ -20,7 +20,7 @@ export const gameDetails = {
         },
         armors: {
             "novice robe":{
-                defense: 2,
+                defense: 1,
                 cost: 5
             },
             "apprentice robe":{
@@ -43,7 +43,7 @@ export const gameDetails = {
     warrior: {
         weapons: {
             sword: {
-                damage: 2,
+                damage: 3,
                 cost: 5
             },
             mace: {
@@ -61,7 +61,7 @@ export const gameDetails = {
         },
         armors: {
             chainmail:{
-                defense: 2,
+                defense: 1,
                 cost: 5
             },
             "metal plating":{
@@ -84,7 +84,7 @@ export const gameDetails = {
     rogue: {
         weapons: {
             bow: {
-                damage: 2,
+                damage: 3,
                 cost: 5
             },
             "poisoned bow": {
@@ -102,7 +102,7 @@ export const gameDetails = {
         },
         armors: {
             cloak:{
-                defense: 2,
+                defense: 1,
                 cost: 5
             },
             "assassin's mantle": {
@@ -125,7 +125,7 @@ export const gameDetails = {
     slime:{
         stats: {
             health: 10,
-            attack: 1,
+            attack: 2,
             defense: 2,
             experience: 3
         },

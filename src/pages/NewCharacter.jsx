@@ -50,7 +50,7 @@ function NewCharacter(props){
 
     return <div className="characterCreationArea">
         <Form action="/create" className="newCharacterForm" method="post">
-            <h1>New Character</h1>
+            <h1 onClick={() => console.log(newCharacter.inventory)}>New Character</h1>
             <img src={currentImage} alt="" />
             <h3>Character Name: </h3>
             <input type="text" name="name" maxLength="19" placeholder="Merlin" autoComplete="off" value={characterName} onChange={(e)=> { characterName.length < 20 ? setCharacterName(e.target.value) : ""}}/>
@@ -65,7 +65,7 @@ function NewCharacter(props){
             <input type="hidden" name="classType" value={newCharacter.classType} />
             <input type="hidden" name="weapon" value={newCharacter.weapon}/>
             <input type="hidden" name="armor" value={newCharacter.armor} />
-            <input type="hidden" name="inventory" value={newCharacter.inventory} />
+            <input type="hidden" name="inventory" value={newCharacter.inventory}  />
             {characterName ? <button>Create</button> : <button disabled>Create</button>}
         </Form>
     </div>

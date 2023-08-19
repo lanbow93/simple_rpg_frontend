@@ -184,7 +184,7 @@ function PlayPage(props){
 
     function handleEnemyAttackAction(){
         const userDefense = gameDetails[user.classType].armors[user.armor].defense
-        const enemyAttack = gameDetails[currentEnemyType].stats.attack + 2
+        const enemyAttack = gameDetails[currentEnemyType].stats.attack
         
         if (userDefense >= enemyAttack) {
             setMessageToPass(`${currentEnemyName} attacked your ${user.armor} but did no damage.`)
