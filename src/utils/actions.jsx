@@ -80,7 +80,7 @@ export const createCharacterAction = async ({request}) => {
         health: 20,
         experience: 10,
         gold: 30,
-        inventory: formData.get("inventory")
+        inventory: formData.get("inventory").split(",")
     }
     const response = await fetch(URL + "/character", {
         method: "post",
