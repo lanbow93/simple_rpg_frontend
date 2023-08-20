@@ -36,7 +36,7 @@ function CreatureCard(props){
         <img src={props.health > 0 ? imageProvider(props.classType) : imageProvider("skull")} alt={`Image of ${props.classType}`} />
         </div>
 
-    </div>
+    </div>        
 }
 
 export default CreatureCard

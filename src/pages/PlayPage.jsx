@@ -88,7 +88,6 @@ function PlayPage(props){
         }
     }
 
-
     function goToFight(){
         generateEnemy()
         setPreviousScreen(currentScreen)
@@ -181,13 +180,29 @@ function PlayPage(props){
             goToFightFromInventory(true)
         }
     }
-
+    // Gameover to reset back to level 1 info
+    function gameover(){
+        setMessageToPass("GAMEOVER. Character's stats have been reset to level 1")
+        setTimeout(goToHome, 3000)
+        setCurrentUserHealth(gameDetails[user.classType].stats.health)
+        user.health = gameDetails[user.classType].stats.health
+        setCurrentExperience(10)
+        user.experience = 10
+        setCurrentGold(30)
+        user.gold = 30
+        user.weapon = user.classType === "wizard" ? "wand" : user.classType === "warrior" ? "sword" : "bow"
+        user.armor = user.classType === "wizard" ? "novice robe" : user.classType === "warrior" ? "chainmail" : "cloak"
+        user.inventory = user.classType === "wizard" ? ["wand","novice robe"] : user.classType === "warrior" ? ["sword", "chainmail"] : ["bow" ,"cloak"]
+        
+    }
     function handleEnemyAttackAction(){
         const userDefense = gameDetails[user.classType].armors[user.armor].defense
         const enemyAttack = gameDetails[currentEnemyType].stats.attack
         
         if (userDefense >= enemyAttack) {
             setMessageToPass(`${currentEnemyName} attacked your ${user.armor} but did no damage.`)
+        } else if(user.health - (enemyAttack - userDefense) <= 0){
+            gameover()
         } else {
             user.health -= enemyAttack - userDefense
             setCurrentUserHealth(user.health)
