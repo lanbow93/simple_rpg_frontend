@@ -243,10 +243,41 @@ function PlayPage(props){
         // setCurrentEnemyHealth(currentEnemyHealth + gameDetails[enemyType].stats.defense - gameDetails[user.classType].weapons.broadsword.damage)
     }
     // Way to determine what buttons are put on the screen
+    const homeOptions = [
+        {
+            clickHandler: goToFight,
+            text: "Fight",
+            isDisabled: false
+        },
+        {
+            clickHandler: goToStore,
+            text: "Store",
+            isDisabled: false
+        },
+        {
+            clickHandler: goToInventory,
+            text: "Inventory",
+            isDisabled: false
+        }
+    ]
+
+    const storeOptions = [
+        {
+            clickHandler: goToHome,
+            text: "Back",
+            isDisabled: false
+        },
+        {
+            clickHandler: goToStore,
+            text: "Purchase",
+            isDisabled: false
+        }
+    ]
+
     const menuOptions = {
         home:
         <div className="homeOptions">
-            <button onClick={ goToFight }>Fight</button>
+            <button onClick={ goToFight }  >Fight</button>
             <button onClick={ goToStore } >Store</button>
             <button onClick={ goToInventory }>Inventory</button>
         </div>,
