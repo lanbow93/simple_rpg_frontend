@@ -322,7 +322,6 @@
     grid-column: span 3;
   }
   .homeDisplay img {
-    /* max-height: 18rem; */
     max-width: 16rem;
   }
   .healthStats{
@@ -363,6 +362,10 @@
   background-size: 22rem 25rem;
   height: 25rem;
 }
+.shopItem {
+  display:flex;
+  flex-direction: column;
+}
 .storeDisplay img{
   max-width: 6rem;
   max-height: 5rem;
@@ -384,15 +387,15 @@
   padding-top: 2rem;
 }
 .shelf:nth-of-type(1) p{
-  margin-top: .6rem;
+  margin-top: .8rem;
   margin-bottom: 1.2rem;
 }
 .shelf:nth-of-type(2) p{
-  margin-top: .45rem;
+  margin-top: .75rem;
   margin-bottom: 1.2rem;
 }
 .shelf:nth-of-type(3) p{
-  margin-top: .4rem;
+  margin-top: .7rem;
 }
 /*_________Finish_________*/
 
@@ -565,6 +568,100 @@
 /*  Properties Large Phones / Tablets */
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 @media (min-width: 43rem) {
+
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/*  Laptops and small monitors */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+@media (min-width: 62rem) {
+  .landingPage {
+    min-height: 95vh;
+  }
+
+  .cardArea {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cardArea a {
+    grid-column: span 2;
+    justify-self: center;
+    margin-top: 1rem;
+    height: 10rem;
+    margin-bottom: -10rem;
+  }
+
+  .characterCardArea {
+    justify-self: center;
+    min-width: 25rem;
+  }
+
+  .storeDisplay, .inventoryDisplay, .fightDisplay, .homeDisplay{
+    width: 40rem;
+    height: 23rem;
+  }
+  .messageArea, .gameButtonArea {
+    width: 40rem;
+  }
+  .messageArea{
+    height: 5rem;
+  }
+  /* Home Screen */
+  .homeDisplay {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .homeDisplay img{
+    max-height: 18rem;
+  }
+  .currentGold{
+    margin-top: -1rem;
+  }
+  /* Finish */
+
+  /* Store Screen */
+  .billboard{
+    background-size: 100% 100%;
+  }
+  .storeItemArea{
+    height: 16rem;
+    background-size: 100% 100%;
+  }
+  .storeDisplay img {
+    max-height: 4rem;
+  }
+  .shelf:nth-of-type(1){
+    padding-top:.60rem;
+  }
+  .shelf:nth-of-type(1) p{
+    margin-top: .1rem;
+    margin-bottom: .1rem;
+  }
+  .shelf:nth-of-type(2) p{
+    margin-top: .2rem;
+    margin-bottom: 0;
+  }
+  .shelf:nth-of-type(3) p{
+    margin-top: -.3rem;
+  }
+  /* Finish */
+ 
+  /* .storeDisplay, .inventoryDisplay, .fightDisplay, .homeDisplay{
+    width: 40rem;
+    height: 23rem;
+  }
+  .messageArea, .gameButtonArea {
+    width: 40rem;
+  } */
+
+  /* Inventory Section */
+  .itemSection{
+
+  }
+  
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/* Large Screens */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+@media (min-width: 90rem) {
   .landingPage {
     min-height: 95vh;
   }
@@ -587,16 +684,4 @@
  .messageArea, .gameOptionsArea, .storeDisplay, .homeDisplay, .inventoryDisplay, .fightDisplay, .gameButtonArea{
     width: 45rem;
   }
-}
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-/*  Laptops and small monitors */
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-@media (min-width: 62rem) {
-
-}
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-/* Large Screens */
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-@media (min-width: 82rem) {
-  
 }
