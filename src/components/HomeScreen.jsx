@@ -4,7 +4,7 @@ import { imageProvider } from "../utils/imageProvider"
 
 function HomeScreen(props){
     return <div className="homeScreen">
-        <div className="displayArea addBorder">
+        <div className="displayArea">
             <h1>{props.name}</h1>
             <div className="healthStats">
                 <h3>Health</h3>
