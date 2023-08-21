@@ -653,10 +653,38 @@
   } */
 
   /* Inventory Section */
-  .itemSection{
-
+  .inventoryDisplay h1 {
+    height: 2rem;
   }
-  
+  .itemSection{
+    height: 21rem;
+  }
+  .statsInventoryScreen{
+    padding-top: 3.8rem;
+    margin-bottom: 2.7rem;
+  }
+  .inventoryItems{
+    grid-template-columns: 7rem 7rem 7rem;
+  }
+
+  .inventoryItems::-webkit-scrollbar {
+    width: 10px; /* Adjust the width of the scrollbar */
+  }
+  .inventoryItems::-webkit-scrollbar-thumb {
+    background-color: white; /* Color of the thumb */
+    border-radius: 1rem; /* Rounded corners */
+  }
+  .inventoryItems::-webkit-scrollbar-track {
+    background-color: rgba(148, 26, 26, 0.452);
+    border-radius: 1rem;
+    max-height: 3rem;
+  }
+  .inventoryItems::-webkit-scrollbar-track-piece {
+    height: 2rem;
+  }
+  .itemArea {
+    height: 12rem;
+  }
 }
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 /* Large Screens */
