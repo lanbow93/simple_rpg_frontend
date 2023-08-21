@@ -125,6 +125,7 @@ function PlayPage(props){
             user.gold -= selectedItemPrice
             user.inventory.push(selectedStoreItem)
             saveCharacterState()
+            console.log("reached")
             setMessageToDisplay(`You have purchased the ${selectedStoreItem}.\nRemaining Gold: ${user.gold}`)
         } else {
             setMessageToDisplay(`You do not have enough gold to purchase the ${selectedStoreItem}`)
@@ -271,7 +272,7 @@ function PlayPage(props){
             isDisabled: false
         },
         {
-            clickHandler: goToStore,
+            clickHandler: handlePurchase,
             text: "Purchase",
             isDisabled: selectedItemPrice === 0  
         }
@@ -346,21 +347,21 @@ function PlayPage(props){
             return <>
                 <Store classType={user.classType} handleItemSelected={handleItemSelected} />
                 <MessageBox borderStatus="noBorder" screenMessage={messageToDisplay} />
-                <GameOptions borderStatus="noBorder" buttonOptions={menuOptions.store} />
+                <MenuButtons menuClassName="gameButtonArea storeOptions" buttonArray={storeOptions} />
             </>
         }
         if (currentScreen === "inventory"){
             return<>
                 <InventoryScreen inventory={user.inventory} gold={currentGold} health={user.health} classType={user.classType} handleItemSelected={handleInventoryItemSelected}/>
                 <MessageBox borderStatus="" screenMessage={messageToDisplay} />
-                <GameOptions borderStatus="" buttonOptions={menuOptions.inventory} />
+                <MenuButtons menuClassName="gameButtonArea inventoryOptions" buttonArray={inventoryOptions} />
             </>
         }
         if (currentScreen === "fight"){
             return<>
                 <FightScreen enemyType={currentEnemyType} enemyName={currentEnemyName} enemyHealth={currentEnemyHealth} enemyBaseHealth={gameDetails[currentEnemyType].stats.health} userName={user.name} userHealth={currentUserHealth} userBaseHealth={gameDetails[user.classType].stats.health} userClass={user.classType} weapon={user.weapon} armor={user.armor} fightMessage={handleFightMessage} />
                 <MessageBox borderStatus="addBorder" screenMessage={messageToDisplay} />
-                <GameOptions borderStatus="addBorder" buttonOptions={menuOptions.fight} />
+                <MenuButtons menuClassName="gameButtonArea attackOptions" buttonArray={attackOptions} />
             </>
         }
     }
