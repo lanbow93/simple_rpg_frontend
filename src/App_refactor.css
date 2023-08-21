@@ -28,7 +28,7 @@
   align-items: center;
   padding-top: 3rem;
 }
-.displayArea, .storeDisplay, .storeItemArea, .inventoryDisplay, .fightDisplay{
+.storeDisplay, .inventoryDisplay, .fightDisplay, .homeDisplay{
   width: 22rem;
   height: 32rem;
 }
@@ -309,6 +309,37 @@
 /*____________FINISH_____________*/
 
 
+
+/*____________Home Screen_________*/
+  .homeDisplay{
+    display: grid;
+    grid-template-columns: 5rem 12rem 5rem;
+    text-align: center;
+    background-color: #ffdc73;
+    align-items: center;
+  }
+  .homeDisplay h1, .currentGold {
+    grid-column: span 3;
+  }
+  .homeDisplay img {
+    /* max-height: 18rem; */
+    max-width: 16rem;
+  }
+  .healthStats{
+    margin-left: 1rem;
+  }
+  .currentLevel{
+    margin-right: 1rem;
+  }
+  .currentGold h3 {
+    margin-bottom: .2rem;
+  }
+  .characterIcon {
+    display: flex;
+    justify-content: center;
+  }
+/*____________FINISH_____________*/
+
 /*_________Store Screen_________*/
 
 .billboard{
@@ -365,13 +396,57 @@
 }
 /*_________Finish_________*/
 
-/* .displayArea, .storeDisplay, .storeItemArea, .inventoryDisplay, .fightDisplay{
-  width: 22rem;
-  height: 32rem;
+  /* .storeDisplay, .storeItemArea, .inventoryDisplay, .fightDisplay{
+    width: 22rem;
+    height: 32rem;
+  }
+  .messageArea, .gameButtonArea {
+    width: 22rem;
+  } */
+
+/*_________Inventory  Area_________*/
+.inventoryDisplay{
+  background-color: gold;
+  text-align: center;
 }
-.messageArea, .gameButtonArea {
-  width: 22rem;
-} */
+.inventoryDisplay h1 {
+  height: 2rem;
+}
+.itemSection{
+  background-image: url("./assets/bagIcon.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 100%;
+  height: 30rem;
+  /* margin-bottom: 1rem; */
+}
+
+.statsInventoryScreen {
+  display: flex;
+  justify-content: space-around;
+  font-size: 1.5rem;
+  padding-top: 5.5rem;
+  margin-bottom: 7rem;
+}
+
+.itemArea {
+  display: grid;
+  height: 14.5rem;
+}
+.inventoryItems{
+  display: grid;
+  grid-template-columns: 5.5rem 5.5rem 5.5rem;
+  justify-self: center;
+  overflow-y: scroll;
+}
+.itemSection img {
+  max-width: 5rem;
+  max-height: 4rem;
+}
+
+/*_________Finish_________*/
+
 
 /*_________Message Box Area_________*/
 .messageArea{
@@ -387,17 +462,14 @@
   margin-left: .3rem;
   margin-right: .3rem;
 }
-
-
 /*_________Finish_________*/
 /*_________Game Button Area_________*/
 .gameButtonArea{
-  height: 4rem;
+  height: 5rem;
   background-color: gold;
   display: flex;
   justify-content: space-around;
-}
-
+}                                                          
 .gameButtonArea button {
   width: 6rem;
   height: 3rem;
@@ -405,13 +477,12 @@
   border-top-right-radius: 6rem;
   border-bottom-left-radius: 1.5rem;
   border-bottom-right-radius: 1.5rem;
-  margin-top: .5rem;
+  margin-top: 1rem;
   border-top: .125rem solid rgb(189, 160, 1);
   border-left: .2rem solid rgb(189, 160, 1);
   border-right: .2rem solid rgb(189, 160, 1);
   border-bottom: .3rem solid rgb(189, 160, 1);
   background-color: #ffbf00;
-  
 }
 
 /* Store Buttons */
@@ -460,7 +531,7 @@
     min-width: 25rem;
   }
 
-  .displayArea, .messageArea, .gameOptionsArea, .storeDisplay, .storeItemArea, .inventoryDisplay, .fightDisplay{
+ .messageArea, .gameOptionsArea, .storeDisplay, .homeDisplay, .inventoryDisplay, .fightDisplay, .gameButtonArea{
     width: 45rem;
   }
 }
