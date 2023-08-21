@@ -298,7 +298,6 @@
 .playArea {
   height: 98vh;
   padding-top: 2.1rem;
-  
   display: flex;
   flex-direction: column;
   align-items: center;
