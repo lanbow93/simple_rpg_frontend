@@ -8,6 +8,7 @@ import { URL } from "../utils/url"
 import { gameDetails } from "../utils/gameDetails"
 import InventoryScreen from "../components/InventoryScreen"
 import FightScreen from "../components/FightScreen"
+import MenuButtons from "../components/MenuButtons"
 
 function PlayPage(props){
     const location = useLocation()
@@ -332,12 +333,13 @@ function PlayPage(props){
         </div>
     }
     // Used to determine what is displayed on the screen
+    
     function configureScreenLayout(){
         if(currentScreen === "home"){
             return <>
                 <HomeScreen name={user.name} classType={user.classType} health={user.health} experience={currentExperience} gold={currentGold}/>
                 <MessageBox borderStatus={"addBorder"} screenMessage={messageToDisplay}/>
-                <GameOptions borderStatus={"addBorder"} buttonOptions={menuOptions.home} />
+                <MenuButtons menuClassName="gameButtonArea homeOptions" buttonArray={homeOptions} />
             </>
         }
         if(currentScreen === "store"){

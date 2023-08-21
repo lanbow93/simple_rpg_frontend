@@ -1,4 +1,4 @@
-function gameButton(props){
+function GameButton(props){
     if(props.isDisabled) {
         return <button onClick={props.clickHandler} disabled>{props.buttonText}</button>
     } else {
@@ -6,4 +6,4 @@ function gameButton(props){
     }
 }
 
-export default gameButton
+export default GameButton
