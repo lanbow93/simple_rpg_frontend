@@ -27,6 +27,8 @@ function PlayPage(props){
     const [currentUserHealth , setCurrentUserHealth] = useState(user.health)
     const [messageToPass, setMessageToPass] = useState("")
     const [attackButtonsStatus, setAttackButtonsStatus] = useState("")
+    const [areAttackButtonsDisabled, setAREAttackButtonsDisabled ] = useState(false)
+
 
     // Post to backend to save character state
     const saveCharacterState = async () => {
@@ -270,7 +272,38 @@ function PlayPage(props){
         {
             clickHandler: goToStore,
             text: "Purchase",
+            isDisabled: selectedItemPrice === 0  
+        }
+    ]
+
+    const inventoryOptions = [
+        {
+            clickHandler: previousScreen === "home" ? goToHome : previousScreen === "store" ? goToStore : () => goToFightFromInventory(false),
+            text: "Back",
             isDisabled: false
+        },
+        {
+            clickHandler: handleItemUse,
+            text: previousScreen === "store" ? "Sell" : "Use",
+            isDisabled: selectedInventoryItemPrice === 0
+        }
+    ]
+
+    const attackOptions = [
+        {
+            clickHandler: handleUserAttackAction,
+            text: "Attack",
+            isDisabled: areAttackButtonsDisabled 
+        },
+        {
+            clickHandler: goToInventory,
+            text: "Item Bag",
+            isDisabled: areAttackButtonsDisabled
+        },
+        {
+            clickHandler: goToHome,
+            text: "Escape",
+            isDisabled: areAttackButtonsDisabled
         }
     ]
 
