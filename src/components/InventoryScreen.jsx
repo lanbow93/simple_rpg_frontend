@@ -20,7 +20,6 @@ function determineItemObject(classType, item){
 function InventoryScreen(props) {
     return <div className="inventoryDisplay">
         <h1>INVENTORY</h1>
-
         <div className="itemSection">
             <div className="statsInventoryScreen">
                 <p>Health: {props.health}/20</p>
