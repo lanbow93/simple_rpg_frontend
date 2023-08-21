@@ -22,6 +22,19 @@
 .hidden {
   display: none !important;
 }
+.playArea{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 3rem;
+}
+.displayArea, .storeDisplay, .storeItemArea, .inventoryDisplay, .fightDisplay{
+  width: 22rem;
+  height: 32rem;
+}
+.messageArea, .gameButtonArea {
+  width: 22rem;
+}
 
 
 /* NAVIGATION MENU MOBILE START */
@@ -295,16 +308,7 @@
 
 /*____________FINISH_____________*/
 
-.playArea{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 2.3rem;
-}
-.displayArea, .messageArea, .gameOptionsArea, .storeDisplay, .storeItemArea, .inventoryDisplay, .fightDisplay{
-  width: 22rem;
-  height: 32rem;
-}
+
 /*_________Store Screen_________*/
 
 .billboard{
@@ -345,7 +349,6 @@
   text-align: center;
   width: 5rem;
 }
-
 .shelf:nth-of-type(1){
   padding-top: 2rem;
 }
@@ -358,11 +361,65 @@
   margin-bottom: 1.2rem;
 }
 .shelf:nth-of-type(3) p{
-  margin-top: .5rem;
+  margin-top: .4rem;
+}
+/*_________Finish_________*/
+
+/* .displayArea, .storeDisplay, .storeItemArea, .inventoryDisplay, .fightDisplay{
+  width: 22rem;
+  height: 32rem;
+}
+.messageArea, .gameButtonArea {
+  width: 22rem;
+} */
+
+/*_________Message Box Area_________*/
+.messageArea{
+  height: 9.5rem;
+  text-align: center;
+  background-color: silver;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.messageArea h1, .messageArea h2{
+  margin-left: .3rem;
+  margin-right: .3rem;
 }
 
 
+/*_________Finish_________*/
+/*_________Game Button Area_________*/
+.gameButtonArea{
+  height: 4rem;
+  background-color: gold;
+  display: flex;
+  justify-content: space-around;
+}
 
+.gameButtonArea button {
+  width: 6rem;
+  height: 3rem;
+  border-top-left-radius: 6rem;
+  border-top-right-radius: 6rem;
+  border-bottom-left-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+  margin-top: .5rem;
+  border-top: .125rem solid rgb(189, 160, 1);
+  border-left: .2rem solid rgb(189, 160, 1);
+  border-right: .2rem solid rgb(189, 160, 1);
+  border-bottom: .3rem solid rgb(189, 160, 1);
+  background-color: #ffbf00;
+  
+}
+
+/* Store Buttons */
+.storeOptions button, .inventoryOptions button{
+    width: 8rem;
+}
+
+/*_________Finish_________*/
 
 
 /*_________Error Screen_________*/
