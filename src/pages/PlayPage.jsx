@@ -61,7 +61,6 @@ function PlayPage(props){
         }
         // Setting random name
         setCurrentEnemyName(gameDetails.generic.names[Math.floor(Math.random()*gameDetails.generic.names.length)])
-
     }
     // Displays message on screen and stores item name and cost for possible purchase
     function handleItemSelected(message, item, cost){
@@ -69,14 +68,12 @@ function PlayPage(props){
         setSelectedStoreItem(item)
         setSelectedStoreItemPrice(cost)
     }
-
     // Effects of when item is clicked in inventory menu
     function handleInventoryItemSelected(message, item, cost){
         setMessageToDisplay(message)
         setSelectedInventoryItem(item)
         setSelectedInventoryItemPrice(cost)
     }
-
     // Functions need to change the screen state
     function goToHome(){
         setPreviousScreen(currentScreen)
@@ -95,7 +92,6 @@ function PlayPage(props){
             setMessageToDisplay(`${user.name} currently has the ${user.weapon} and ${user.armor} equipped. A ${currentEnemyType} named ${currentEnemyName} has appeared.`)
         }
     }
-
     function goToFight(){
         generateEnemy()
         setPreviousScreen(currentScreen)
@@ -206,12 +202,18 @@ function PlayPage(props){
     }
     function handleEnemyAttackAction(){
         const userDefense = gameDetails[user.classType].armors[user.armor].defense
-        const enemyAttack = gameDetails[currentEnemyType].stats.attack
-        
+        let enemyAttack = gameDetails[currentEnemyType].stats.attack
+        // Easter egg attack raised
+        if(currentEnemyName==="Rimuru Tempest" && currentEnemyType==="slime"){
+            enemyAttack = 100
+        } 
         if (userDefense >= enemyAttack) {
             setMessageToPass(`${currentEnemyName} attacked your ${user.armor} but did no damage.`)
         } else if(user.health - (enemyAttack - userDefense) <= 0){
-            gameover()
+            setMessageToPass(`${currentEnemyName} attacked your ${user.armor} and did ${ enemyAttack - userDefense} damage `)
+            user.health = 0
+            setCurrentUserHealth(0)
+            setTimeout(gameover, 3000)
         } else {
             user.health -= enemyAttack - userDefense
             setCurrentUserHealth(user.health)
