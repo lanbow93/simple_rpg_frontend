@@ -102,7 +102,7 @@ function PlayPage(props){
         setCurrentScreen("fight")
         clearItemSelection()
         if(hasUsedItem){
-            setAttackButtonsStatus("disabled")
+            setAreAttackButtonsDisabled(true)
             setTimeout(handleEnemyAttackAction, 3000)
         }
     }
