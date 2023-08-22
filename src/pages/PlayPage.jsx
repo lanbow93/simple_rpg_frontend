@@ -210,6 +210,7 @@ function PlayPage(props){
         if (userDefense >= enemyAttack) {
             setMessageToPass(`${currentEnemyName} attacked your ${user.armor} but did no damage.`)
         } else if(user.health - (enemyAttack - userDefense) <= 0){
+            setAreAttackButtonsDisabled(true)
             setMessageToPass(`${currentEnemyName} attacked your ${user.armor} and did ${ enemyAttack - userDefense} damage `)
             user.health = 0
             setCurrentUserHealth(0)
