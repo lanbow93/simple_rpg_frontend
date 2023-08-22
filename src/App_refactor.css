@@ -158,6 +158,9 @@
   .signupPage form {
     justify-content: space-between;
   }
+  .inProgress {
+    font-size:  .5rem;
+  }
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 /*_________Characters Menu_________*/
 .charactersArea {
@@ -581,6 +584,10 @@
 @media (min-width: 57rem) {
   .landingPage {
     min-height: 95vh;
+  }
+
+  .inProgress {
+    font-size:  1rem;
   }
 
   .cardArea {

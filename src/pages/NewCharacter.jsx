@@ -56,17 +56,17 @@ function NewCharacter(props){
             <input type="text" name="name" maxLength="19" placeholder="Merlin" autoComplete="off" value={characterName} onChange={(e)=> { characterName.length < 20 ? setCharacterName(e.target.value) : ""}}/>
             <div className="radioOptions">
                 <input type="radio" name="being_class" value="wizard" defaultChecked onChange={radioChange}/>
-                <p>Wizard</p>
+                <p>Wizard <span className="inProgress">(TBA)</span></p>
                 <input type="radio" name="being_class" value="warrior" onChange={radioChange}/>
                 <p>Warrior</p>
                 <input type="radio" name="being_class" value="rogue" onChange={radioChange}/>
-                <p>Rogue</p>
+                <p>Rogue <span className="inProgress">(TBA)</span></p>
             </div>
             <input type="hidden" name="classType" value={newCharacter.classType} />
             <input type="hidden" name="weapon" value={newCharacter.weapon}/>
             <input type="hidden" name="armor" value={newCharacter.armor} />
             <input type="hidden" name="inventory" value={newCharacter.inventory}  />
-            {characterName ? <button>Create</button> : <button disabled>Create</button>}
+            {characterName  && newCharacter.classType==="warrior" ? <button>Create</button> : <button disabled>Create</button>}
         </Form>
     </div>
 }
