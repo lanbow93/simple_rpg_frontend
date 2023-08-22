@@ -61,7 +61,7 @@ function PlayPage(props){
         }
         // Setting random name
         setCurrentEnemyName(gameDetails.generic.names[Math.floor(Math.random()*gameDetails.generic.names.length)])
-        
+
     }
     // Displays message on screen and stores item name and cost for possible purchase
     function handleItemSelected(message, item, cost){
@@ -89,6 +89,8 @@ function PlayPage(props){
     function handleFightMessage(){
         if(messageToPass){
             setMessageToDisplay(messageToPass)
+        } else if (currentEnemyName === "Rimuru Tempest" && currentEnemyType === "slime") {
+            setMessageToDisplay(`A ${currentEnemyType} named ${currentEnemyName} has appeared. Escaping is recommended`)
         } else {
             setMessageToDisplay(`${user.name} currently has the ${user.weapon} and ${user.armor} equipped. A ${currentEnemyType} named ${currentEnemyName} has appeared.`)
         }
