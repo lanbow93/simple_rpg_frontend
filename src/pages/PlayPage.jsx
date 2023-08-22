@@ -48,7 +48,7 @@ function PlayPage(props){
     // Selecting enemy based on experience, assigning random name
     function generateEnemy(){
         setMessageToPass("")
-        setAttackButtonsStatus("")
+        setAreAttackButtonsDisabled(false)
         if(currentExperience < 30) {
             setCurrentEnemyType("slime")
             setCurrentEnemyHealth(gameDetails.slime.stats.health)
@@ -189,6 +189,7 @@ function PlayPage(props){
         setMessageToPass("GAMEOVER. Character's stats have been reset to level 1")
         setTimeout(goToHome, 3000)
         clearItemSelection()
+        setAreAttackButtonsDisabled(false)
         setCurrentUserHealth(gameDetails[user.classType].stats.health)
         user.health = gameDetails[user.classType].stats.health
         setCurrentExperience(10)
@@ -214,7 +215,7 @@ function PlayPage(props){
             setMessageToPass(`${currentEnemyName} attacked your ${user.armor} and did ${ enemyAttack - userDefense} damage `)
         }
         saveCharacterState()
-        setAttackButtonsStatus("")
+        setAreAttackButtonsDisabled(false)
 
     }
     function handleUserAttackAction(){
@@ -222,12 +223,12 @@ function PlayPage(props){
         const enemyDefense = gameDetails[currentEnemyType].stats.defense
 
         if (enemyDefense >= userAttack ){
-            setAttackButtonsStatus("disabled")
+            setAreAttackButtonsDisabled(true)
             setMessageToPass("Your attack did nothing. Try a stronger weapon.")
             setTimeout(handleEnemyAttackAction, 3000)
 
         } else {
-            setAttackButtonsStatus("disabled")
+            setAreAttackButtonsDisabled(true)
             if ((currentEnemyHealth - (userAttack - enemyDefense)) > 0) {
                 setCurrentEnemyHealth(currentEnemyHealth - (userAttack - enemyDefense))
                 setMessageToPass(`${user.name} attacked with their ${user.weapon} and did ${(userAttack - enemyDefense)} damage`)
@@ -244,8 +245,6 @@ function PlayPage(props){
             }
         }
 
-        
-        // setCurrentEnemyHealth(currentEnemyHealth + gameDetails[enemyType].stats.defense - gameDetails[user.classType].weapons.broadsword.damage)
     }
     // Way to determine what buttons are put on the screen
     const homeOptions = [

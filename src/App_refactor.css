@@ -463,8 +463,13 @@
   background: linear-gradient(225deg, rgba(4,241,34,1) 2%, rgba(0,218,255,1) 62%);
   color: black;
 }
+
 .fightDisplay img {
   max-width: 9rem;
+  max-height: 12rem;
+}
+.enemyArea img{
+  max-height: 10rem;
 }
 .enemyArea{
   display: flex;
@@ -573,7 +578,7 @@
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 /*  Laptops and small monitors */
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-@media (min-width: 62rem) {
+@media (min-width: 57rem) {
   .landingPage {
     min-height: 95vh;
   }
@@ -643,14 +648,6 @@
     margin-top: -.3rem;
   }
   /* Finish */
- 
-  /* .storeDisplay, .inventoryDisplay, .fightDisplay, .homeDisplay{
-    width: 40rem;
-    height: 23rem;
-  }
-  .messageArea, .gameButtonArea {
-    width: 40rem;
-  } */
 
   /* Inventory Section */
   .inventoryDisplay h1 {
@@ -685,31 +682,25 @@
   .itemArea {
     height: 12rem;
   }
+
+  /* Finish */
+  /* Fight Screen */
+    /* .storeDisplay, .inventoryDisplay, .fightDisplay, .homeDisplay{
+    width: 40rem;
+    height: 23rem;
+  }
+  .messageArea, .gameButtonArea {
+    width: 40rem;
+  } */
+  .userArea{
+    margin-top: -8.5rem;
+  }
 }
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 /* Large Screens */
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 @media (min-width: 90rem) {
-  .landingPage {
-    min-height: 95vh;
-  }
 
-  .cardArea {
-    grid-template-columns: 1fr 1fr;
-  }
 
-  .cardArea a {
-    grid-column: span 2;
-    justify-self: center;
-    margin-top: 1rem;
-  }
 
-  .characterCardArea {
-    justify-self: center;
-    min-width: 25rem;
-  }
-
- .messageArea, .gameOptionsArea, .storeDisplay, .homeDisplay, .inventoryDisplay, .fightDisplay, .gameButtonArea{
-    width: 45rem;
-  }
 }
