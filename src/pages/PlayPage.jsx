@@ -61,6 +61,7 @@ function PlayPage(props){
         }
         // Setting random name
         setCurrentEnemyName(gameDetails.generic.names[Math.floor(Math.random()*gameDetails.generic.names.length)])
+        
     }
     // Displays message on screen and stores item name and cost for possible purchase
     function handleItemSelected(message, item, cost){
