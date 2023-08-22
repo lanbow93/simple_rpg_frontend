@@ -15,6 +15,7 @@ import weakHealthPotionIcon from "../assets/weakHealthPotionIcon.png"
 import healthPotionIcon from "../assets/healthPotionIcon.png"
 import strongHealthPotionIcon from "../assets/strongHealthPotionIcon.png"
 import skullIcon from "../assets/crossbones.png"
+;import rimuruIcon from "../assets/rimuruTempest.png"
 
 export function imageProvider(item){
     switch(item){
@@ -96,6 +97,9 @@ export function imageProvider(item){
         // Gameover
         case "skull":
             return skullIcon
+        // Easter egg
+        case "rimuru":
+            return rimuruIcon
         default:
             break
     }

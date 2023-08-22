@@ -19,18 +19,15 @@ function determineItemObject(classType, item){
 
 function InventoryScreen(props) {
     return <div className="inventoryDisplay">
-        <div className="inventorySection">
-            <h1>INVENTORY</h1>
-
-            <div className="itemSection">
-                <div className="statsInventoryScreen">
-                    <p>Health: {props.health}/20</p>
-                    <p>Gold: {props.gold}</p>
-                </div>
-                <div className="itemArea">
-                    <div className="inventoryItems">
-                    {props.inventory.map((item, index) => <DisplayItem item={item} itemDetails={determineItemObject(props.classType,item)} handleItemSelected={props.handleItemSelected} key={item + index} />)}
-                    </div>
+        <h1>INVENTORY</h1>
+        <div className="itemSection">
+            <div className="statsInventoryScreen">
+                <p>Health: {props.health}/20</p>
+                <p>Gold: {props.gold}</p>
+            </div>
+            <div className="itemArea">
+                <div className="inventoryItems">
+                {props.inventory.map((item, index) => <DisplayItem item={item} itemDetails={determineItemObject(props.classType,item)} handleItemSelected={props.handleItemSelected} key={item + index} />)}
                 </div>
             </div>
         </div>

@@ -1,4 +1,5 @@
-import './App.css'
+// import './App.css'
+import './App_refactor.css'
 import Navigation from "./components/Navigation"
 import {Outlet} from "react-router-dom"
 

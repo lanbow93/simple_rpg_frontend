@@ -1,13 +1,13 @@
 import { useLocation } from "react-router-dom"
 import HomeScreen from "../components/HomeScreen"
 import MessageBox from "../components/MessageBox"
-import GameOptions from "../components/GameOptions"
 import { useState } from "react"
 import Store from "../components/Store"
 import { URL } from "../utils/url"
 import { gameDetails } from "../utils/gameDetails"
 import InventoryScreen from "../components/InventoryScreen"
 import FightScreen from "../components/FightScreen"
+import MenuButtons from "../components/MenuButtons"
 
 function PlayPage(props){
     const location = useLocation()
@@ -17,7 +17,7 @@ function PlayPage(props){
     const [messageToDisplay, setMessageToDisplay] = useState("Select An Option")
     const [previousScreen, setPreviousScreen] = useState("")
     const [selectedStoreItem, setSelectedStoreItem] = useState("")
-    const [selectedItemPrice, setSelectedItemPrice] = useState(0)
+    const [selectedStoreItemPrice, setSelectedStoreItemPrice] = useState(0)
     const [selectedInventoryItem, setSelectedInventoryItem] = useState("")
     const [selectedInventoryItemPrice, setSelectedInventoryItemPrice] = useState(0)
     const [currentExperience, setCurrentExperience] = useState(user.experience)
@@ -27,7 +27,15 @@ function PlayPage(props){
     const [currentUserHealth , setCurrentUserHealth] = useState(user.health)
     const [messageToPass, setMessageToPass] = useState("")
     const [attackButtonsStatus, setAttackButtonsStatus] = useState("")
+    const [areAttackButtonsDisabled, setAreAttackButtonsDisabled ] = useState(false)
 
+    // Clear any selected item
+    function clearItemSelection(){
+        setSelectedStoreItem("")
+        setSelectedStoreItemPrice(0)
+        setSelectedInventoryItem("")
+        setSelectedInventoryItemPrice(0)
+    }
     // Post to backend to save character state
     const saveCharacterState = async () => {
         const response = await fetch(URL + "/character/" + user._id, {
@@ -40,7 +48,7 @@ function PlayPage(props){
     // Selecting enemy based on experience, assigning random name
     function generateEnemy(){
         setMessageToPass("")
-        setAttackButtonsStatus("")
+        setAreAttackButtonsDisabled(false)
         if(currentExperience < 30) {
             setCurrentEnemyType("slime")
             setCurrentEnemyHealth(gameDetails.slime.stats.health)
@@ -58,36 +66,32 @@ function PlayPage(props){
     function handleItemSelected(message, item, cost){
         setMessageToDisplay(message)
         setSelectedStoreItem(item)
-        setSelectedItemPrice(cost)
+        setSelectedStoreItemPrice(cost)
     }
-
     // Effects of when item is clicked in inventory menu
     function handleInventoryItemSelected(message, item, cost){
         setMessageToDisplay(message)
         setSelectedInventoryItem(item)
         setSelectedInventoryItemPrice(cost)
     }
-
     // Functions need to change the screen state
     function goToHome(){
         setPreviousScreen(currentScreen)
         setCurrentScreen("home")
         setMessageToDisplay("Select An Option")
-        setSelectedStoreItem("")
-        setSelectedItemPrice(0)
-        setSelectedInventoryItemPrice(0)
-        setSelectedInventoryItem("")
         setMessageToPass("")
+        clearItemSelection()
     }
     // Required due to if added to goToFight, will cause delayed component re-render
     function handleFightMessage(){
         if(messageToPass){
             setMessageToDisplay(messageToPass)
+        } else if (currentEnemyName === "Rimuru Tempest" && currentEnemyType === "slime") {
+            setMessageToDisplay(`A ${currentEnemyType} named ${currentEnemyName} has appeared. Escaping is recommended`)
         } else {
             setMessageToDisplay(`${user.name} currently has the ${user.weapon} and ${user.armor} equipped. A ${currentEnemyType} named ${currentEnemyName} has appeared.`)
         }
     }
-
     function goToFight(){
         generateEnemy()
         setPreviousScreen(currentScreen)
@@ -95,10 +99,8 @@ function PlayPage(props){
     }
     function goToFightFromInventory(hasUsedItem){
         setPreviousScreen(currentScreen)
-        
         setCurrentScreen("fight")
-        setSelectedInventoryItemPrice(0)
-        setSelectedInventoryItem("")
+        clearItemSelection()
         if(hasUsedItem){
             setAttackButtonsStatus("disabled")
             setTimeout(handleEnemyAttackAction, 3000)
@@ -117,11 +119,12 @@ function PlayPage(props){
     // Function to purchase on parent to trigger change in child components
     function handlePurchase(){
         // Verifying that character has enough money
-        if(selectedItemPrice > 0 && currentGold >= selectedItemPrice) {
-            setCurrentGold(currentGold - selectedItemPrice)
-            user.gold -= selectedItemPrice
+        if(selectedStoreItemPrice > 0 && currentGold >= selectedStoreItemPrice) {
+            setCurrentGold(currentGold - selectedStoreItemPrice)
+            user.gold -= selectedStoreItemPrice
             user.inventory.push(selectedStoreItem)
             saveCharacterState()
+            console.log("reached")
             setMessageToDisplay(`You have purchased the ${selectedStoreItem}.\nRemaining Gold: ${user.gold}`)
         } else {
             setMessageToDisplay(`You do not have enough gold to purchase the ${selectedStoreItem}`)
@@ -184,6 +187,8 @@ function PlayPage(props){
     function gameover(){
         setMessageToPass("GAMEOVER. Character's stats have been reset to level 1")
         setTimeout(goToHome, 3000)
+        clearItemSelection()
+        setAreAttackButtonsDisabled(false)
         setCurrentUserHealth(gameDetails[user.classType].stats.health)
         user.health = gameDetails[user.classType].stats.health
         setCurrentExperience(10)
@@ -197,19 +202,26 @@ function PlayPage(props){
     }
     function handleEnemyAttackAction(){
         const userDefense = gameDetails[user.classType].armors[user.armor].defense
-        const enemyAttack = gameDetails[currentEnemyType].stats.attack
-        
+        let enemyAttack = gameDetails[currentEnemyType].stats.attack
+        // Easter egg attack raised
+        if(currentEnemyName==="Rimuru Tempest" && currentEnemyType==="slime"){
+            enemyAttack = 100
+        } 
         if (userDefense >= enemyAttack) {
             setMessageToPass(`${currentEnemyName} attacked your ${user.armor} but did no damage.`)
         } else if(user.health - (enemyAttack - userDefense) <= 0){
-            gameover()
+            setAreAttackButtonsDisabled(true)
+            setMessageToPass(`${currentEnemyName} attacked your ${user.armor} and did ${ enemyAttack - userDefense} damage `)
+            user.health = 0
+            setCurrentUserHealth(0)
+            setTimeout(gameover, 3000)
         } else {
             user.health -= enemyAttack - userDefense
             setCurrentUserHealth(user.health)
             setMessageToPass(`${currentEnemyName} attacked your ${user.armor} and did ${ enemyAttack - userDefense} damage `)
         }
         saveCharacterState()
-        setAttackButtonsStatus("")
+        setAreAttackButtonsDisabled(false)
 
     }
     function handleUserAttackAction(){
@@ -217,12 +229,12 @@ function PlayPage(props){
         const enemyDefense = gameDetails[currentEnemyType].stats.defense
 
         if (enemyDefense >= userAttack ){
-            setAttackButtonsStatus("disabled")
+            setAreAttackButtonsDisabled(true)
             setMessageToPass("Your attack did nothing. Try a stronger weapon.")
             setTimeout(handleEnemyAttackAction, 3000)
 
         } else {
-            setAttackButtonsStatus("disabled")
+            setAreAttackButtonsDisabled(true)
             if ((currentEnemyHealth - (userAttack - enemyDefense)) > 0) {
                 setCurrentEnemyHealth(currentEnemyHealth - (userAttack - enemyDefense))
                 setMessageToPass(`${user.name} attacked with their ${user.weapon} and did ${(userAttack - enemyDefense)} damage`)
@@ -239,62 +251,98 @@ function PlayPage(props){
             }
         }
 
-        
-        // setCurrentEnemyHealth(currentEnemyHealth + gameDetails[enemyType].stats.defense - gameDetails[user.classType].weapons.broadsword.damage)
     }
     // Way to determine what buttons are put on the screen
-    const menuOptions = {
-        home:
-        <div className="homeOptions">
-            <button onClick={ goToFight }>Fight</button>
-            <button onClick={ goToStore } >Store</button>
-            <button onClick={ goToInventory }>Inventory</button>
-        </div>,
-        store:
-        <div className="storeOptions">
-            <button onClick={goToHome}>Back</button>
-            {selectedItemPrice === 0 ? <button onClick={() => alert("Not Able To Purchase")} disabled>Purchase</button> : <button onClick={handlePurchase}>Purchase</button>}
-        </div>,
-        inventory:
-        <div className="inventoryOptions">
-            <button onClick={previousScreen === "home" ? goToHome : previousScreen === "fight" ? () => goToFightFromInventory(false) : goToStore}>Back</button>
-            {selectedInventoryItemPrice === 0 ? <button onClick={handleItemUse} disabled>{previousScreen === "store" ? "Sell" : "Use" }</button> : <button onClick={handleItemUse}>{previousScreen === "store" ? "Sell" : "Use" }</button>}
-        </div>,
-        fight:
-        <div className="attackOptions">
-            {attackButtonsStatus === "disabled" ? <button onClick={handleUserAttackAction} disabled>Attack</button> : <button onClick={handleUserAttackAction}>Attack</button>}
-            {attackButtonsStatus === "disabled" ? <button onClick={goToInventory} disabled>Item Bag</button> : <button onClick={goToInventory} >Item Bag</button>}
-            {attackButtonsStatus === "disabled" ? <button onClick={goToHome} disabled>Escape</button> :<button onClick={goToHome}>Escape</button>}  
-        </div>
-    }
+    const homeOptions = [
+        {
+            clickHandler: goToFight,
+            text: "Fight",
+            isDisabled: false
+        },
+        {
+            clickHandler: goToStore,
+            text: "Store",
+            isDisabled: false
+        },
+        {
+            clickHandler: goToInventory,
+            text: "Inventory",
+            isDisabled: false
+        }
+    ]
+
+    const storeOptions = [
+        {
+            clickHandler: goToHome,
+            text: "Back",
+            isDisabled: false
+        },
+        {
+            clickHandler: handlePurchase,
+            text: "Purchase",
+            isDisabled: selectedStoreItemPrice === 0  
+        }
+    ]
+
+    const inventoryOptions = [
+        {
+            clickHandler: previousScreen === "home" ? goToHome : previousScreen === "store" ? goToStore : () => goToFightFromInventory(false),
+            text: "Back",
+            isDisabled: false
+        },
+        {
+            clickHandler: handleItemUse,
+            text: previousScreen === "store" ? "Sell" : "Use",
+            isDisabled: selectedInventoryItemPrice === 0
+        }
+    ]
+
+    const attackOptions = [
+        {
+            clickHandler: handleUserAttackAction,
+            text: "Attack",
+            isDisabled: areAttackButtonsDisabled 
+        },
+        {
+            clickHandler: goToInventory,
+            text: "Item Bag",
+            isDisabled: areAttackButtonsDisabled
+        },
+        {
+            clickHandler: goToHome,
+            text: "Escape",
+            isDisabled: areAttackButtonsDisabled
+        }
+    ]
     // Used to determine what is displayed on the screen
+    
     function configureScreenLayout(){
         if(currentScreen === "home"){
             return <>
                 <HomeScreen name={user.name} classType={user.classType} health={user.health} experience={currentExperience} gold={currentGold}/>
-                <MessageBox borderStatus={"addBorder"} screenMessage={messageToDisplay}/>
-                <GameOptions borderStatus={"addBorder"} buttonOptions={menuOptions.home} />
+                <MessageBox screenMessage={messageToDisplay}/>
+                <MenuButtons menuClassName="gameButtonArea homeOptions" buttonArray={homeOptions} />
             </>
         }
         if(currentScreen === "store"){
             return <>
                 <Store classType={user.classType} handleItemSelected={handleItemSelected} />
-                <MessageBox borderStatus="noBorder" screenMessage={messageToDisplay} />
-                <GameOptions borderStatus="noBorder" buttonOptions={menuOptions.store} />
+                <MessageBox screenMessage={messageToDisplay} />
+                <MenuButtons menuClassName="gameButtonArea storeOptions" buttonArray={storeOptions} />
             </>
         }
         if (currentScreen === "inventory"){
             return<>
                 <InventoryScreen inventory={user.inventory} gold={currentGold} health={user.health} classType={user.classType} handleItemSelected={handleInventoryItemSelected}/>
-                <MessageBox borderStatus="" screenMessage={messageToDisplay} />
-                <GameOptions borderStatus="" buttonOptions={menuOptions.inventory} />
+                <MessageBox screenMessage={messageToDisplay} />
+                <MenuButtons menuClassName="gameButtonArea inventoryOptions" buttonArray={inventoryOptions} />
             </>
         }
         if (currentScreen === "fight"){
             return<>
                 <FightScreen enemyType={currentEnemyType} enemyName={currentEnemyName} enemyHealth={currentEnemyHealth} enemyBaseHealth={gameDetails[currentEnemyType].stats.health} userName={user.name} userHealth={currentUserHealth} userBaseHealth={gameDetails[user.classType].stats.health} userClass={user.classType} weapon={user.weapon} armor={user.armor} fightMessage={handleFightMessage} />
-                <MessageBox borderStatus="addBorder" screenMessage={messageToDisplay} />
-                <GameOptions borderStatus="addBorder" buttonOptions={menuOptions.fight} />
+                <MessageBox screenMessage={messageToDisplay} />
+                <MenuButtons menuClassName="gameButtonArea attackOptions" buttonArray={attackOptions} />
             </>
         }
     }

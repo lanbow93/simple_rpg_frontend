@@ -3,8 +3,7 @@ import { imageProvider } from "../utils/imageProvider"
 
 
 function HomeScreen(props){
-    return <div className="homeScreen">
-        <div className="displayArea addBorder">
+    return <div className="homeDisplay">
             <h1>{props.name}</h1>
             <div className="healthStats">
                 <h3>Health</h3>
@@ -19,9 +18,9 @@ function HomeScreen(props){
             </div>
             <div className="currentGold">
                 <h3>Current Gold: {props.gold}</h3>
+                <h4>{10 - props.experience%10} experience until next level</h4>
             </div>
         </div>
-    </div>
 }
 
 export default HomeScreen

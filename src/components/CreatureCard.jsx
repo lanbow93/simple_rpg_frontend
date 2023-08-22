@@ -25,7 +25,19 @@ function determineHealthBar(baseHealth, currentHealth){
     }
     return healthBar
 }
+
+
 function CreatureCard(props){
+    function checkForEasterEgg(){
+        if(props.health <= 0){
+            return imageProvider("skull")
+        } else if(props.name === "Rimuru Tempest" && props.classType === "slime"){
+            return imageProvider("rimuru")
+        } else {
+            return imageProvider(props.classType)
+        }
+    }
+    
     return <div className={props.divClass}>
         <h2>{props.name}</h2>
         <div className="healthField">
@@ -33,7 +45,7 @@ function CreatureCard(props){
         </div>
         <p>{props.health}/{props.baseHealth}</p>
         <div className="imageBlock">
-        <img src={props.health > 0 ? imageProvider(props.classType) : imageProvider("skull")} alt={`Image of ${props.classType}`} />
+        <img src={checkForEasterEgg()} alt={`Image of ${props.classType}`} />
         </div>
 
     </div>        
